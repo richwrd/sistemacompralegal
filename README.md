@@ -1,3 +1,3 @@
 # compre-legal
 
-command: nodemon app.js
+command: npm start
