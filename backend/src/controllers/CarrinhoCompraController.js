@@ -1,4 +1,4 @@
-import CarrinhoCompra from '../models/CarrinhoCompra.js';
+import CarrinhoCompra from '../models/CarrinhoCompraModel.js';
 
 export default class CarrinhoCompraController {
     static async getCarrinhoCompras(req, res) {
@@ -13,7 +13,7 @@ export default class CarrinhoCompraController {
 
     static async createCarrinhoCompra(req, res) {
         try {
-            const userId = req.user._id; // Supondo que você tem o ID do usuário autenticado
+            const { userId } = req.body; // Supondo que você tenha o ID do usuário no corpo da requisição
             const carrinho = new CarrinhoCompra({ userId });
             await carrinho.save();
             res.status(201).json(carrinho);
