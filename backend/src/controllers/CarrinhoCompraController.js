@@ -1,15 +1,6 @@
 import CarrinhoCompra from '../models/CarrinhoCompraModel.js';
 
 export default class CarrinhoCompraController {
-    static async getCarrinhoCompras(req, res) {
-        try {
-            const carrinhos = await CarrinhoCompra.find().lean();
-            res.json(carrinhos);
-        } catch (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Erro interno do servidor' });
-        }
-    }
 
     static async createCarrinhoCompra(req, res) {
         try {
