@@ -22,7 +22,7 @@ export default class ProdutoController {
         try {
             const { nome, preco, descricao, imagem, categoria, quantidade } = req.body;
 
-            const produto = new Produto({ nome, preco, descricao, imagem, categoria, quantidade });
+            const produto = new Produto({ nome, preco, descricao, imagem, tipo, categoria, quantidade });
 
             if (!produto.imagem) {
                 produto.imagem = 'https://cdn-icons-png.flaticon.com/512/1695/1695213.png';

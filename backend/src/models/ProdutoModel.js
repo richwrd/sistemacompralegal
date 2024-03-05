@@ -10,6 +10,7 @@ const Produto = mongoose.model(
         preco: { type: Number, required: true },
         descricao: { type: String, required: true },
         imagem: { type: String, required: false },
+        tipo: {type : String, required: true}, 
         categoria: { type: String, required: false },
         quantidade: { type: Number, required: true },
     }

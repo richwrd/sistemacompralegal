@@ -4,8 +4,8 @@ export default class CarrinhoCompraController {
 
     static async createCarrinhoCompra(req, res) {
         try {
-            const { userId } = req.body; // Supondo que você tenha o ID do usuário no corpo da requisição
-            const carrinho = new CarrinhoCompra({ userId });
+            const { userId, produtos, total } = req.body; // Supondo que você tenha o ID do usuário no corpo da requisição
+            const carrinho = new CarrinhoCompra({ userId, produtos, total});
             await carrinho.save();
             res.status(201).json(carrinho);
         } catch (err) {
