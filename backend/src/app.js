@@ -1,5 +1,6 @@
 // CONFIGURAÇÕES GERAIS DO APLICATIVO
 
+import cors from 'cors';
 import express from 'express';
 import connectDB from './config/db.js'; 
 import ProdutoRoutes from './routes/ProdutoRoutes.js';
@@ -10,6 +11,9 @@ const app = express();
 
 // Função de conexão com o MongoDB
 connectDB();
+
+// Habilita o CORS para todas as origens
+app.use(cors());
 
 // Middleware para processar JSON
 app.use(express.json());
