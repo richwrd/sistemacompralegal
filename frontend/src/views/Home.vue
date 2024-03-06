@@ -1,6 +1,7 @@
 <template>
     <!-- HTML -->
     <p>TESTE</p>
+    <h1>aaaaaaaaa</h1>
 </template>
 
 <script>
