@@ -2,9 +2,9 @@
     <div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li class="center"><a href="#">Produtos</a></li>
-            <li class="upward"><a href="#">Perfil</a></li>
-            <li class="forward"><a href="#">Sobre</a></li>
+            <li class="center"><a href="/produtos">Produtos</a></li>
+            <li class="upward"><a href="/usuario/:id">Perfil</a></li>
+            <li class="forward"><a href="/sobre">Sobre</a></li>
         </ul>
     </div>
 </template>
@@ -22,7 +22,6 @@
 
 /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -37,6 +36,13 @@ body {
     justify-content: center;
     background: #c1f7f5;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 .nav-links {
     display: flex;

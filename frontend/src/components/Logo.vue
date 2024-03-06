@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'Sobre',
+  name: 'TelaSobre',
   props: {
     msg: String
   }
