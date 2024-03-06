@@ -6,30 +6,23 @@
     </p>
     <h3>Integrantes</h3>
     <ul>
-      <li><a href="https://github.com/AllanOgawa" target="_blank" rel="noopener"></a>Allan Ogawa</li>
+      <li><a href="https://github.com/AllanOgawa" target="_blank" rel="noopener">Allan Ogawa</a></li>
       <p></p>
-      <li><a href="https://github.com/richwrd" target="_blank" rel="noopener"></a>Eduardo Richard</li>
+      <li><a href="https://github.com/richwrd" target="_blank" rel="noopener">Eduardo Richard</a></li>
       <p></p>
-      <li><a href="https://github.com/devhetor" target="_blank" rel="noopener"></a>Heitor Brandolin</li>
+      <li><a href="https://github.com/devhetor" target="_blank" rel="noopener">Heitor Brandolin</a></li>
       <p></p>
       <li><a href="https://github.com/KarlaDuarte87" target="_blank" rel="noopener">Karla Duarte</a></li>
       <p></p>
-      <li><a href="https://github.com/Mariaeed" target="_blank" rel="noopener"></a>Maria Eduarda</li>
+      <li><a href="https://github.com/Mariaeed" target="_blank" rel="noopener">Maria Eduarda</a></li>
     </ul>
   </div>
-  <div>
-    <ul class="nav-links">
-    <li><a href="#">Dashboard</a></li>
-    <li class="center"><a href="#">Portfolio</a></li>
-    <li class="upward"><a href="#">Services</a></li>
-    <li class="forward"><a href="#">Feedback</a></li>
-  </ul>
-  </div>
+
 </template>
 
 <script>
 export default {
-  name: 'HomeStart',
+  name: 'Sobre',
   props: {
     msg: String
   }
