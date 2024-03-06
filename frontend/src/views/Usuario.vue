@@ -4,11 +4,9 @@
 
 <script>
 export default {
-    export default {
-        name: 'NavBar',
-        props: {
-            msg: String
-        }
+    name: 'TelaUsuario',
+    props: {
+        msg: String
     }
 }
 </script>

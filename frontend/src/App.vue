@@ -2,17 +2,18 @@
   <NavBar/>
   <img alt="Loja" src="./assets/loja.png">
   <Logo msg="Seja Bem-Vindo ao Compra Legal"/>
+  <TelaProduto/>
 </template>
 
 <script>
 import NavBar from './components/Navbar.vue'
-import Logo from './components/Logo.vue'
+import TelaProduto from './views/Produto.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    Logo
+    TelaProduto
   }
 }
 </script>
