@@ -1,14 +1,13 @@
 <template>
     <!-- HTML -->
+    <p>TESTE</p>
 </template>
 
 <script>
-export default {
-    export default {
-        name: 'NavBar',
-        props: {
-            msg: String
-        }
+export default{
+    name: 'TelaHome',
+    props: {
+        msg: String
     }
 }
 </script>
