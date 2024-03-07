@@ -1,20 +1,16 @@
 <template>
-  <NavBar/>
-  <img alt="Loja" src="./assets/loja.png">
-  <Logo msg="Seja Bem-Vindo ao Compra Legal"/>
-  <TelaProduto/>
+  
+  <router-view></router-view> <!-- Renderiza a NavBar -->
+
+  <router-view name="telaProduto"></router-view>
+  <router-view name="telaHome"></router-view>
+  <router-view name="telaSobre"></router-view>
+  
 </template>
 
 <script>
-import NavBar from './components/Navbar.vue'
-import TelaProduto from './views/Produto.vue'
-
 export default {
-  name: 'App',
-  components: {
-    NavBar,
-    TelaProduto
-  }
+  name: 'App'
 }
 </script>
 
@@ -27,4 +23,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>./components/Logo.vue
+</style>./components/Logo.vue./views/Sobre.vue./views/TelaUsuario.vue
+
+
+

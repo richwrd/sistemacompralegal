@@ -1,65 +1,134 @@
 <template>
-    <div class="container">
-        <h1>Produtos</h1>
-        <hr />
-        <FormTodo v-on:add-todo="addProduto"></FormTodo>
-        <div class="list-group">
-            <p v-if="produtos.length <= 0">Sem produtos...</p>
-            <div v-else class="list-group-item" v-for="(produtos, index) in allProdutos" v-bind:key="index">
-                <span class="produto_index">Produto: <strong>{{ produto.name }}</strong></span>
-                <p>{{ produto.message }}</p>
-                <div>
-                    <a href="#" title="Excluir" v-on:click.prevent="removeProduto(index)">Excluir</a>
-                </div>
-            </div>
-        </div>
-        <hr />
+    <div class="card-list">
+        <a href="#" class="card-item">
+            <img src="../assets/products/monitor.jpg" alt="Card Image">
+            <span class="product">Monitor</span>
+            <h3>Monitor Gamer Samsung 22" FHD,75Hz, HDMI, VGA, Freesync, Preto, Série T350</h3>
+        </a>
+        <a href="#" class="card-item">
+            <img src="../assets/products/nitro.png" alt="Card Image">
+            <span class="produto">Notebook</span>
+            <h3>Acer Nitro 5 AN515-58-57Y8 Laptop para jogos | Intel Core i5-12500H | NVIDIA GeForce RTX 3050 Ti GPU para laptop | Tela IPS FHD 15,6" 144Hz | DDR4 de 16GB | SSD 4ª geração de 512GB</h3>
+        </a>
+        <a href="#" class="card-item">
+            <img src="../assets/products/processador.jpg" alt="Card Image">
+            <span class="produtos">Processadores</span>
+            <h3>Processador AMD Ryzen 7 5800X, Cache 36MB, 3.8GHz (4.7GHz Max Turbo), AM4</h3>
+        </a>
+        <a href="#" class="card-item">
+            <img src="../assets/products/processador.jpg" alt="Card Image">
+            <span class="produtos">Processadores</span>
+            <h3>Processador AMD Ryzen 7 5800X, Cache 36MB, 3.8GHz (4.7GHz Max Turbo), AM4</h3>
+        </a>
+        <a href="#" class="card-item">
+            <img src="../assets/products/processador.jpg" alt="Card Image">
+            <span class="produtos">Processadores</span>
+            <h3>Processador AMD Ryzen 7 5800X, Cache 36MB, 3.8GHz (4.7GHz Max Turbo), AM4</h3>
+        </a>
     </div>
 </template>
 
 <script>
-import FormTodo from './FormTodo.vue';
-
 export default {
-    name: 'TelaProduto',
+    name: 'telaProduto',
     props: {
-        msg: String,
-        FormTodo
-    },
-    data() {
-    return {
-      produtos: [
-        {
-            "name": "garrafa",
-            "message": "garrafa termica"
-        }
-      ]
+        msg: String
     }
-  },
-  methods: {
-    addComment(comment) {
-      this.comments.push(comment);
-    },
-    removeComment(index) {
-      this.comments.splice(index, 1);
-    }
-  },
-  computed: {
-    allComments() {
-      return this.comments.map(comment => ({
-        ...comment,
-        name: comment.name.trim() === '' ? 'Anônimo' : comment.name
-      }))
-    }
-  },
-  watch: {
-    comments(val) {
-      console.log('val', val)
-    }
-  }
 }
+
 </script>
 
 <style>
-/* css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    background: #ecececdb;
+}
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1250px;
+    margin: 150px auto;
+    padding: 20px;
+    gap: 20px;
+}
+.card-list .card-item {
+    background: #fff;
+    padding: 26px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+    list-style: none;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: border 0.5s ease;
+}
+.card-list .card-item:hover {
+    border: 2px solid #000;
+}
+.card-list .card-item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    object-fit: contain;
+}
+.card-list span {
+    display: inline-block;
+    background: #F7DFF5;
+    margin-top: 32px;
+    padding: 8px 15px;
+    font-size: 0.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.card-list .developer {
+    background-color: #F7DFF5; 
+    color: #B22485;
+}   
+.card-list .designer {
+    background-color: #d1e8ff;
+    color: #2968a8;
+}
+.card-list .editor {
+    background-color: #d6f8d6; 
+    color: #205c20;
+}
+.card-item h3 {
+    color: #000;
+    font-size: 1.438rem;
+    margin-top: 28px;
+    font-weight: 600;
+}
+.card-item .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: bottom;
+    transform: rotate(-35deg);
+    height: 40px;
+    width: 40px;
+    color: #000;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    margin-top: 40px;
+    transition: 0.2s ease;
+}
+.card-list .card-item:hover .arrow  {
+    background: #000;
+    color: #fff; 
+}
+@media (max-width: 1200px) {
+    .card-list .card-item {
+        padding: 15px;
+    }
+}
+@media screen and (max-width: 980px) {
+    .card-list {
+        margin: 0 auto;
+    }
+}
 </style>

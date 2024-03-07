@@ -10,11 +10,11 @@ const Produto = mongoose.model(
         preco: { type: Number, required: true },
         descricao: { type: String, required: true },
         imagem: { type: String, required: false },
-        tipo: {type : String, required: true}, 
+        tipo: { type: String, required: false },
         categoria: { type: String, required: false },
         quantidade: { type: Number, required: true },
     }
     )
-    );
+);
 
 export default Produto;

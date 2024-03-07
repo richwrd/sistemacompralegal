@@ -20,7 +20,7 @@ export default class ProdutoController {
 
     static async createProduto(req, res) {
         try {
-            const { nome, preco, descricao, imagem, categoria, quantidade } = req.body;
+            const { nome, preco, descricao, imagem, tipo, categoria, quantidade } = req.body;
 
             const produto = new Produto({ nome, preco, descricao, imagem, tipo, categoria, quantidade });
 

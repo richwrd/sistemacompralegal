@@ -1,9 +1,9 @@
 <template>
     <div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li class="center"><a href="/produtos">Produtos</a></li>
+            <li><a href="/home">Home</a></li>
             <li class="upward"><a href="/usuario/:id">Perfil</a></li>
+            <li class="upward"><a href="/produto">Produto</a></li>
             <li class="forward"><a href="/sobre">Sobre</a></li>
         </ul>
     </div>
