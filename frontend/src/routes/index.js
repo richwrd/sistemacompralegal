@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: '/sobre',
-    name: 'Sroduto',
+    name: 'Sobre',
     components: {
       default: NavBar, // Renderiza a NavBar como componente padrão
       telaSobre: telaSobre
