@@ -6,7 +6,7 @@ import telaSobre from "../components/Sobre.vue"
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     components: {
       default: NavBar, // Renderiza a NavBar como componente padrão

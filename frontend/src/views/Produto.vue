@@ -4,28 +4,28 @@
             <img src="../assets/products/monitor.jpg" alt="Card Image">
             <span class="product">Monitor</span>
             <h3>Monitor Gamer Samsung 22" FHD,75Hz, HDMI, VGA, Freesync, Preto, Série T350</h3>
+            <div class="card-price">
+                <p>R$780,00</p>
+            </div>
         </a>
         <a href="#" class="card-item">
-            <img src="../assets/products/nitro.png" alt="Card Image">
-            <span class="produto">Notebook</span>
-            <h3>Acer Nitro 5 AN515-58-57Y8 Laptop para jogos | Intel Core i5-12500H | NVIDIA GeForce RTX 3050 Ti GPU para laptop | Tela IPS FHD 15,6" 144Hz | DDR4 de 16GB | SSD 4ª geração de 512GB</h3>
+            <img src="../assets/products/monitor.jpg" alt="Card Image">
+            <span class="product">Monitor</span>
+            <h3>Monitor Gamer Samsung 22" FHD,75Hz, HDMI, VGA, Freesync, Preto, Série T350</h3>
+            <div class="card-price">
+                <p>R$780,00</p>
+            </div>
         </a>
         <a href="#" class="card-item">
-            <img src="../assets/products/processador.jpg" alt="Card Image">
-            <span class="produtos">Processadores</span>
-            <h3>Processador AMD Ryzen 7 5800X, Cache 36MB, 3.8GHz (4.7GHz Max Turbo), AM4</h3>
-        </a>
-        <a href="#" class="card-item">
-            <img src="../assets/products/processador.jpg" alt="Card Image">
-            <span class="produtos">Processadores</span>
-            <h3>Processador AMD Ryzen 7 5800X, Cache 36MB, 3.8GHz (4.7GHz Max Turbo), AM4</h3>
-        </a>
-        <a href="#" class="card-item">
-            <img src="../assets/products/processador.jpg" alt="Card Image">
-            <span class="produtos">Processadores</span>
-            <h3>Processador AMD Ryzen 7 5800X, Cache 36MB, 3.8GHz (4.7GHz Max Turbo), AM4</h3>
+            <img src="../assets/products/monitor.jpg" alt="Card Image">
+            <span class="product">Monitor</span>
+            <h3>Monitor Gamer Samsung 22" FHD,75Hz, HDMI, VGA, Freesync, Preto, Série T350</h3>
+            <div class="card-price">
+                <p>R$780,00</p>
+            </div>
         </a>
     </div>
+    
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 * {
-    margin: 0;
+    margin: 10;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
@@ -53,7 +53,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     max-width: 1250px;
-    margin: 150px auto;
+    margin: 15px auto;
     padding: 20px;
     gap: 20px;
 }
@@ -80,7 +80,7 @@ body {
 .card-list span {
     display: inline-block;
     background: #F7DFF5;
-    margin-top: 32px;
+    margin-top: 10px;
     padding: 8px 15px;
     font-size: 0.75rem;
     border-radius: 50px;
@@ -100,30 +100,25 @@ body {
 }
 .card-item h3 {
     color: #000;
-    font-size: 1.438rem;
+    font-size: 1.2rem;
     margin-top: 28px;
-    font-weight: 600;
+    font-weight: 300;
+    padding: 6px;
 }
-.card-item .arrow {
-    display: flex;
-    align-items: center;
-    justify-content: bottom;
-    transform: rotate(-35deg);
-    height: 40px;
-    width: 40px;
+
+.card-price p {
     color: #000;
-    border: 1px solid #000000;
-    border-radius: 50%;
-    margin-top: 40px;
-    transition: 0.2s ease;
+    font-size: 2rem;
+    font-weight: bold;
 }
+
 .card-list .card-item:hover .arrow  {
     background: #000;
     color: #fff; 
 }
 @media (max-width: 1200px) {
     .card-list .card-item {
-        padding: 15px;
+        padding: 5px;
     }
 }
 @media screen and (max-width: 980px) {

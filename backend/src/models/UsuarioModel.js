@@ -8,8 +8,7 @@ const Usuario = mongoose.model(
     new Schema({
         nome: { type: String, required: true },
         sobrenome: { type: String, required: true },
-        idade: { type: Number, required: true },
-        imagem: { type: String, required: false },
+        idade: { type: Number, required: true }
     }
 ));
 

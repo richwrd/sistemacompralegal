@@ -38,7 +38,7 @@ body {
 }
 
 .container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
 }
