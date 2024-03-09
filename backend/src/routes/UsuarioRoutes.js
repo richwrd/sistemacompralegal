@@ -7,5 +7,6 @@ router.post('/edit', UsuarioController.editUsuarioPost);
 router.get('/edit/:id', UsuarioController.editUsuario);
 router.get('/create', UsuarioController.createUsuario);
 router.post('/create', UsuarioController.createUsuarioPost);
+router.get('/delete/:id', UsuarioController.deleteUsuario);
 
 export default router;

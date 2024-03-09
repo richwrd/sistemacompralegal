@@ -1,11 +1,11 @@
 <template>
     <!-- HTML -->
-    <p>HOME</p>
+    <p>LIST USUARIO</p>
 </template>
 
 <script>
 export default{
-    name: 'telaHome',
+    name: 'TelaListUsuario',
     props: {
         msg: String
     }

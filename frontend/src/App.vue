@@ -1,28 +1,12 @@
 <template>
-  <NavBar/>
-  <!-- <img alt="Loja" src="./assets/loja.png"> -->
-  <!-- <TelaSobre msg="Seja Bem-Vindo ao Compra Legal"/>
-  <TelaHome/> -->
-
-
-  <TelaUsuario/>
-
+  <router-view></router-view> <!-- Renderiza a NavBar -->
+  <router-view name="telaHome"></router-view>
+  <router-view name="telaSobre"></router-view>
 </template>
 
 <script>
-import NavBar from './components/Navbar.vue'
-// import TelaSobre from './views/Sobre.vue'
-// import TelaHome from './views/Home.vue'
-import TelaUsuario from './views/TelaUsuario.vue';
-
 export default {
-  name: 'App',
-  components: {
-    NavBar,
-    // TelaSobre,
-    // TelaHome
-    TelaUsuario
-  }
+  name: 'App'
 }
 </script>
 
@@ -35,4 +19,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>./components/Logo.vue./views/Sobre.vue./views/TelaUsuario.vue
+</style>
