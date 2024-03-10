@@ -28,8 +28,10 @@ export default {
     methods: {
         async fetchProdutos() {
             try {
-                const response = await axios.get('http://localhost:3000/produto/list');
-                this.produtos = response.data;
+                const response = await axios.get('http://localhost:3000/produto/list', {
+                    params: { page: 1, limit: 10 } // Define a página como 1 e o limite como 10
+                });
+                this.produtos = response.data.produtos; // Ajusta para a resposta do servidor
             } catch (error) {
                 console.error('Erro ao obter produtos:', error);
             }

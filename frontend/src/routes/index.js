@@ -16,6 +16,9 @@ const routes = [
     components: {
       default: NavBar,
       telaHome: telaHome
+    },
+    meta: {
+      title: 'Home'
     }
   },
   {
@@ -24,6 +27,9 @@ const routes = [
     components: {
       default: NavBar,
       telaSobre: telaSobre
+    },
+    meta: {
+      title: 'Sobre'
     }
   },
   {
@@ -33,12 +39,20 @@ const routes = [
       default: NavBar,
       telaProduto: telaProduto
     },
+    meta: {
+      title: 'Produtos'
+    }
   }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || 'Compre Legal';
+  next();
 });
 
 export default router;
