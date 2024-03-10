@@ -14,13 +14,15 @@ export default class ProdutoController {
 
             const total = await Produto.countDocuments();
 
-            res.status(200).json({
+            // console.log(produtos, total, page, Math.ceil(total / limit));
+
+            return res.status(200).json({
                 produtos,
                 total,
                 page,
                 pages: Math.ceil(total / limit),
             });
-            return res.status(200).json(produtos);
+            
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Erro interno do servidor' });

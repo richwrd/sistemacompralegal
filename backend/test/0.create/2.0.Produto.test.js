@@ -51,17 +51,17 @@ describe('📦 POST', () => {
       // Chama a função da controladora
       await ProdutoController.createProdutoPost(req,res);
 
-      // console.log(req)
-      // console.log(res)
-      
       // Verifica o status da resposta
       assert.strictEqual(res.statusCode, 201); 
 
       // Retira parametros não enviados e cria um novo objeto
-      const { _id, __v, imagem, ...ProdutoSemIdEV } = res.jsonData._doc;
+      const { _id, __v, seq, imagem, ...ProdutoSemIdEV } = res.jsonData._doc;
       
       assert.deepStrictEqual(ProdutoSemIdEV, mockProdutoEnviado);
 
+      // console.log('COMPARACAO FINAL ENVIADO:', mockProdutoEnviado);
+      // console.log('COMPARACAO FINAL RECEBIDO:', ProdutoSemIdEV);
+  
       // verifica se gravou no banco de dados
       const idProduto = await buscarIdProdutoPorNome(mockProdutoEnviado.nome);
 

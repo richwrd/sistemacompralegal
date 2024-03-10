@@ -7,6 +7,7 @@ router.post('/edit', UsuarioController.editUsuarioPost);
 router.get('/edit/:id', UsuarioController.editUsuario);
 router.post('/create', UsuarioController.createUsuarioPost);
 router.get('/delete/:id', UsuarioController.deleteUsuario);
+router.get('/:id', UsuarioController.getUsuario);
 // router.get('/list', UsuarioController.listUsuario);
 
 

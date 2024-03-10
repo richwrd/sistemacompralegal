@@ -62,7 +62,12 @@ describe('📦 GET', () => {
   describe('#getProdutos()\n        produtos/list', () => {
     it('Deve retornar a lista de produtos', async () => {
       // Cria a requisição (vazia, pois não requer parâmetros)
-      const req = {};
+      const req = {
+        query: {
+          page: 1,
+          limit: 10
+        }
+      };
   
       // Objeto de resposta simulado
       const res = {

@@ -46,10 +46,11 @@ describe('📦 POST', () => {
       assert.strictEqual(res.statusCode, 201); 
 
       // Retira parametros não enviados e cria um novo objeto
-      const { _id, __v, ...usuarioSemIdEV } = res.jsonData._doc;
+      const { _id, __v, seq, ...usuarioSemIdEV } = res.jsonData._doc;
       
-      // console.log('COMPARACAO FINAL ENVIADO:', mockUsuarioEnviado)
-      // console.log('COMPARACAO FINAL RECEBIDO:', usuarioSemIdEV)
+      // console.log('COMPARACAO FINAL ENVIADO:', mockUsuarioEnviado);
+      // console.log('COMPARACAO FINAL RECEBIDO:', usuarioSemIdEV);
+
       // Verifica os dados enviados na resposta, excluindo _id e __v
       assert.deepStrictEqual(usuarioSemIdEV, mockUsuarioEnviado);
       
