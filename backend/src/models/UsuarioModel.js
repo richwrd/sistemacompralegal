@@ -6,6 +6,7 @@ connectDB();
 const Usuario = mongoose.model(
     'usuarios',
     new Schema({
+        _id: { type: mongoose.Schema.Types.ObjectId, required: true },
         nome: { type: String, required: true },
         sobrenome: { type: String, required: true },
         idade: { type: Number, required: true },

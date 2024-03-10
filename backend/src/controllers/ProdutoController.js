@@ -3,14 +3,23 @@ import Produto from '../models/ProdutoModel.js';
 export default class ProdutoController {
     static async getProdutoList(req, res) {
         try {
-            const produtos = await Produto.find().lean();
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
 
-            produtos.forEach((produto) => {
-                if (!produto.imagem) {
-                    produto.imagem = 'https://cdn-icons-png.flaticon.com/512/1695/1695213.png';
-                }
+            const produtos = await Produto.find()
+                .lean()
+                .sort({ nome: 1 })
+                .skip((page - 1) * limit)
+                .limit(limit);
+
+            const total = await Produto.countDocuments();
+
+            res.status(200).json({
+                produtos,
+                total,
+                page,
+                pages: Math.ceil(total / limit),
             });
-
             return res.status(200).json(produtos);
         } catch (error) {
             console.error(error);

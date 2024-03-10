@@ -6,6 +6,7 @@ connectDB();
 const CarrinhoCompra = mongoose.model(
     'carrinho_compra',
     new Schema({
+        _id: { type: mongoose.Schema.Types.ObjectId, required: true } , // ID do carrinho
         userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // Referência ao usuário que possui o carrinho
         produtos: [
             {

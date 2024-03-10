@@ -6,11 +6,11 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app.js",
-    "test-create": "mocha test/create/*.test.js",
-    "test-read": "mocha test/read/*.test.js",
-    "test-update": "mocha test/update/*.test.js",
-    "test-delete": "mocha test/delete/*.test.js",
-    "test-all": "clear && mocha test/create/*.test.js test/read/*.test.js test/update/*.test.js",
+    "test-create": "mocha test/0.create/*.test.js",
+    "test-read": "mocha test/1.read/*.test.js",
+    "test-update": "mocha test/2.update/*.test.js",
+    "test-delete": "mocha test/3.delete/*.test.js",
+    "test-all": "clear && mocha test/0.create/*.test.js test/1.read/*.test.js test/2.update/*.test.js",
     "test": "clear && echo \"\n\n➡ CREATE / READ / UPDATE 📑 \n|\n✅   npm run test-all \n\n\n➡ DELETE 🗑 \n|\n✅   npm run test-delete \n\n\""
   },
   "keywords": [],
@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.3",
     "mongoose": "^8.2.0",
+    "mongoose-sequence": "^6.0.1",
     "vuex": "^4.1.0"
   }
 }

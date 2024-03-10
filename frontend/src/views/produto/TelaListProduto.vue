@@ -28,7 +28,7 @@ export default {
     methods: {
         async fetchProdutos() {
             try {
-                const response = await axios.get('http://localhost:3000/produtos/list');
+                const response = await axios.get('http://localhost:3000/produto/list');
                 this.produtos = response.data;
             } catch (error) {
                 console.error('Erro ao obter produtos:', error);
