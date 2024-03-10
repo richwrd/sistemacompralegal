@@ -56,7 +56,7 @@ export default class UsuarioController {
                 return res.status(404).json({ error: 'Usuário não encontrado' });
             }
 
-            res.json(usuario);
+            return res.status(200).json(usuario);
             
         } catch (err) {
             console.error(err);
@@ -72,7 +72,7 @@ export default class UsuarioController {
             if (!usuario) {
                 return res.status(404).json({ error: 'Usuário não encontrado' });
             }
-            res.json(usuario);
+            return res.status(200).json({ message: 'Produto excluído com sucesso' });
         } catch (err) {
             console.error(err);
             res.status(500).json({ error: 'Erro interno do servidor' });

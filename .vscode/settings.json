@@ -1,7 +1,7 @@
 {
     "files.exclude": {
-        "**/node_modsules": true,
-        "**/package1.json": true,
+        "**/node_modules": true,
+        // "**/package.json": true,
         "**/package-lock.json": true,
     }
 }

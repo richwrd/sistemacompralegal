@@ -1,7 +1,7 @@
 import Produto from '../models/ProdutoModel.js';
 
 export default class ProdutoController {
-    static async getProdutos(req, res) {
+    static async getProdutoList(req, res) {
         try {
             const produtos = await Produto.find().lean();
 
@@ -11,32 +11,13 @@ export default class ProdutoController {
                 }
             });
 
-            res.json(produtos);
+            return res.status(200).json(produtos);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     }
-
-    static async createProduto(req, res) {
-        try {
-            const { nome, preco, descricao, imagem, categoria, quantidade } = req.body;
-
-            const produto = new Produto({ nome, preco, descricao, imagem, tipo, categoria, quantidade });
-
-            if (!produto.imagem) {
-                produto.imagem = 'https://cdn-icons-png.flaticon.com/512/1695/1695213.png';
-            }
-
-            await produto.save();
-
-            res.status(201).json(produto);
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Erro interno do servidor' });
-        }
-    }
-
+    
     static async getProduto(req, res) {
         const { id } = req.params;
         try {
@@ -51,7 +32,27 @@ export default class ProdutoController {
         }
     }
 
-    static async updateProduto(req, res) {
+    static async createProdutoPost(req, res) {
+        try {
+            const { nome, preco, descricao, imagem, tipo, categoria, quantidade } = req.body;
+
+            const produto = new Produto({ nome, preco, descricao, imagem, tipo, categoria, quantidade });
+
+            if (!produto.imagem) {
+                produto.imagem = "frontend/public/images/produto_teste.png";
+            }
+
+            await produto.save();
+
+            return res.status(201).json(produto);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Erro interno do servidor' });
+        }
+    }
+
+
+    static async updateProdutoPut(req, res) {
         const { id } = req.params;
         const updateData = req.body;
         try {
@@ -59,7 +60,7 @@ export default class ProdutoController {
             if (!produto) {
                 return res.status(404).json({ error: 'Produto não encontrado' });
             }
-            res.json(produto);
+            return res.status(200).json(produto); // Retornar o código de status 200 e o produto atualizado
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Erro interno do servidor' });
@@ -73,7 +74,7 @@ export default class ProdutoController {
             if (!produto) {
                 return res.status(404).json({ error: 'Produto não encontrado' });
             }
-            res.json({ message: 'Produto excluído com sucesso' });
+            return res.status(200).json({ message: 'Produto excluído com sucesso' });
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Erro interno do servidor' });
