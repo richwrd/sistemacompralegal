@@ -2,6 +2,8 @@
   <router-view></router-view> <!-- Renderiza a NavBar -->
   <router-view name="telaHome"></router-view>
   <router-view name="telaSobre"></router-view>
+  <router-view name="telaProduto"></router-view>
+  
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
     <div>
         <ul class="nav-links">
-        <a href="/home" style="width: 10%; height: 10%;">
+        <a href="/" style="width: 10%; height: 10%;">
             <img src="../assets/logo.png" style="width: 100%; height: 100%;">
         </a>
         <div style="display:flex; justify-content: flex-end; align-items: center;">
             <li class="upward"><a href="/usuario/:id">Perfil</a></li>
-            <li class="upward"><a href="/produto">Produto</a></li>
+            <li class="upward"><a href="/produtos">Produto</a></li>
             <li class="forward"><a href="/sobre">Sobre</a></li>
         </div>
         </ul>
