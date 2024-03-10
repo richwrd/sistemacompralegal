@@ -1,10 +1,14 @@
 <template>
     <div>
         <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li class="center"><a href="/produtos">Produtos</a></li>
+        <a href="/home" style="width: 10%; height: 10%;">
+            <img src="../assets/logo.png" style="width: 100%; height: 100%;">
+        </a>
+        <div style="display:flex; justify-content: flex-end; align-items: center;">
             <li class="upward"><a href="/usuario/:id">Perfil</a></li>
+            <li class="upward"><a href="/produto">Produto</a></li>
             <li class="forward"><a href="/sobre">Sobre</a></li>
+        </div>
         </ul>
     </div>
 </template>
@@ -46,8 +50,7 @@ body {
 
 .nav-links {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     background: #fff;
     padding: 20px 15px;
     border-radius: 12px;
