@@ -3,9 +3,14 @@
 import cors from 'cors';
 import express from 'express';
 import connectDB from './config/db.js'; 
+import AuthRoutes from './routes/AuthRoutes.js';
 import ProdutoRoutes from './routes/ProdutoRoutes.js';
 import UsuarioRoutes from './routes/UsuarioRoutes.js';
 import CarrinhoCompraRoutes from './routes/CarrinhoCompraRoutes.js';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
 
 const app = express();
 
@@ -19,6 +24,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rota para produtos
+app.use('/auth', AuthRoutes)
 app.use('/usuario', UsuarioRoutes);
 app.use('/produto', ProdutoRoutes);
 app.use('/carrinho', CarrinhoCompraRoutes);

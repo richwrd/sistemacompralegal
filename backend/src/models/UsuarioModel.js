@@ -1,6 +1,8 @@
 import connectDB from '../config/db.js';
 import mongoose, { Schema } from 'mongoose';
 import mongooseSequence from 'mongoose-sequence';
+import bcrypt from 'bcrypt';
+
 
 connectDB();
 
@@ -15,6 +17,8 @@ const UsuarioSchema = new Schema({
     sobrenome: { type: String, required: true },
     idade: { type: Number, required: true },
     imagem: { type: String, required: false },
+    email: { type: String, required: true },
+    senha: { type: String, required: true },
 }
 );
 
@@ -24,6 +28,26 @@ UsuarioSchema.plugin(mongooseSequence(mongoose), {
     id: 'usuarios_id',
     disableHooks: true // Desativa os ganchos para impedir a criação duplicada do ID
 });
+
+// Pré-processamento da senha antes de salvar
+UsuarioSchema.pre('save', async function (next) {
+    const user = this;
+    if (!user.isModified('senha')) return next();
+
+    try {
+        const hashedPassword = await bcrypt.hash(user.senha, 10);
+        user.senha = hashedPassword;
+        next();
+    } catch (error) {
+        return next(error);
+    }
+});
+
+// Método para verificar a senha
+UsuarioSchema.methods.comparePassword = async function (senha) {
+    
+    return bcrypt.compare(senha, this.senha);
+};
 
 
 // Crie o modelo usando o esquema

@@ -50,7 +50,7 @@ export default class ProdutoController {
             const produto = new Produto({ nome, preco, descricao, imagem, tipo, categoria, quantidade });
 
             if (!produto.imagem) {
-                produto.imagem = "frontend/public/images/produto_teste.png";
+                produto.imagem = "https://static3.tcdn.com.br/img/img_prod/468236/produto_teste_7145_1_f816ad73890b2db46e6e460c44ae5d22.png";
             }
 
             await produto.save();
