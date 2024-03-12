@@ -5,24 +5,28 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 export default class AuthController {
+
     static async loginAuth(req, res) {
 
         try {
             const usuario = await Usuario.findOne({ email: req.body.email });
             if (!usuario) {
+                console.log('if1')
                 return res.status(400).send('Usuário não encontrado.');
             }
 
             const senhaValida = await usuario.comparePassword(req.body.senha);
             if (!senhaValida) {
+
+                console.log('if2')
                 return res.status(400).send('Senha inválida!');
             }
 
             const accessToken = jwt.sign({ id: usuario._id }, process.env.ACCESS_TOKEN_SECRET);
-            res.json({ accessToken: accessToken });
+            return res.json({ accessToken: accessToken });
         } catch (error) {
             console.error(error);
-            res.status(500).send('Erro interno do servidor');
+            return res.status(500).send('Erro interno do servidor');
         }
     };
 
