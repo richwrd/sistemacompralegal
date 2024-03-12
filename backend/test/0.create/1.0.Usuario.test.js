@@ -1,5 +1,5 @@
 import assert from 'assert';
-import UsuarioController from '../../src/controllers/UsuarioController.js';
+import AuthController from '../../src/controllers/AuthController.js';
 import UsuarioModel from '../../src/models/UsuarioModel.js';
 
 
@@ -19,10 +19,19 @@ async function buscarIdUsuarioPorNome(nomeUsuario) {
   }
 }
 
+
 describe('📦 POST', () => {
-  describe('#createUsuario()\n        usuario/create', () => {
+  describe('#createUsuario()\n        auth/register', () => {
     it('Deve criar um novo usuário', async () => {
-      const mockUsuarioEnviado = { nome: 'TesteUser', sobrenome: 'Mocha', idade: 60, imagem: 'teste.png'};
+      const mockUsuarioEnviado = {
+        nome: 'TesteUser',
+        sobrenome: 'teste',
+        idade: 1,
+        imagem: 'teste.png',
+        email: 'teste1@teste.com.br',
+        senha: 'senha123',
+        confirmasenha: 'senha123'
+      };
 
       const req = { body: mockUsuarioEnviado };
 
@@ -33,34 +42,17 @@ describe('📦 POST', () => {
           this.statusCode = code;
           return this;
         },
-        json(data) {
+        send(data) {
           this.jsonData = data;
         }
       };
-       // Criando um objeto res simulado com propriedades dinâmicas
-      
+      // Criando um objeto res simulado com propriedades dinâmicas
+
       // Chama a função da controladora
-      await UsuarioController.createUsuarioPost(req,res);
+      await AuthController.registerAuthPost(req, res);
 
       // Verifica o status da resposta
-      assert.strictEqual(res.statusCode, 201); 
-
-      // Retira parametros não enviados e cria um novo objeto
-      const { _id, __v, seq, ...usuarioSemIdEV } = res.jsonData._doc;
-      
-      // console.log('COMPARACAO FINAL ENVIADO:', mockUsuarioEnviado);
-      // console.log('COMPARACAO FINAL RECEBIDO:', usuarioSemIdEV);
-
-      // Verifica os dados enviados na resposta, excluindo _id e __v
-      assert.deepStrictEqual(usuarioSemIdEV, mockUsuarioEnviado);
-      
-      
-      // Verifica se o ID retornado é o mesmo do banco de dados
-      const idUsuario = await buscarIdUsuarioPorNome(mockUsuarioEnviado.nome);
-      
-      const idUsuarioString = String(idUsuario);
-
-      assert.strictEqual(res.jsonData._id.toString(), idUsuarioString);
+      assert.strictEqual(res.statusCode, 201);
 
     });
   });

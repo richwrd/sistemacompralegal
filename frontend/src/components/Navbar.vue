@@ -5,7 +5,7 @@
             <img src="../assets/logo.png" style="width: 100%; height: 100%;">
         </a>
         <div style="display:flex; justify-content: flex-end; align-items: center;">
-            <li class="upward"><a href="/usuario/:id">Perfil</a></li>
+            <li class="upward"><a href="/auth/login">Perfil</a></li>
             <li class="upward"><a href="/produtos">Produto</a></li>
             <li class="forward"><a href="/sobre">Sobre</a></li>
             <li class="forward"><a href="/admin">Administração</a></li>

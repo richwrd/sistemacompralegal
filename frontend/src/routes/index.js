@@ -4,9 +4,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NavBar from './../components/Navbar.vue';
 
 //  VIEWS
+// import telaLogin from '../views/TelaLogin.vue';
 import telaHome from './../views/Home.vue';
 import telaSobre from './../views/Sobre.vue';
-
 import telaProduto from './../views/produto/TelaListProduto.vue';
 
 const routes = [
@@ -21,6 +21,16 @@ const routes = [
       title: 'Home'
     }
   },
+  // {
+  //   path: '/login',
+  //   name: 'Login',
+  //   components: {
+  //     telaLogin: telaLogin
+  //   },
+  //   meta: {
+  //     title: 'Login'
+  //   }
+  // },
   {
     path: '/sobre',
     name: 'Sobre',

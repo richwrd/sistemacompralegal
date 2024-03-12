@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start:backend": "cd backend && npm start",
-    "start:frontend": "cd frontend && npm start",
+    "start:frontend": "cd frontend && npm run serve",
     "start": "npm run start:backend & npm run start:frontend"
-  },
-  "dependencies": {
-    "@types/express": "^4.17.21",
-    "vue-router": "^4.3.0"
   }
 }
