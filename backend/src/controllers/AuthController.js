@@ -34,12 +34,10 @@ export default class AuthController {
         const { nome, sobrenome, idade, email, senha, confirmasenha } = req.body;
 
         if(!nome || !sobrenome || !idade || !email || !senha || !confirmasenha) {
-            console.log('1 if')
             return res.status(400).send('Preencha todos os campos obrigatórios!');
         }
 
         if(confirmasenha !== senha){
-            console.log('2 if')
             return res.status(400).send('As senhas não coincidem!');
         }
 
@@ -47,10 +45,8 @@ export default class AuthController {
                // Verifica se o usuário já existe
             const usuarioExiste = await Usuario.findOne({ email: email });
             if (usuarioExiste) {
-                console.log('3 if')
                 return res.status(400).send('Email já cadastrado!');
             }
-
 
             // Cria uma nova instância do modelo Usuario
             const novoUsuario = new Usuario({
