@@ -35,7 +35,11 @@ UsuarioSchema.pre('save', async function (next) {
     if (!user.isModified('senha')) return next();
 
     try {
-        const hashedPassword = await bcrypt.hash(user.senha, 10);
+        // Gera um salt com complexidade 12
+        const salt = await bcrypt.genSalt(12);
+        
+        // Hash da senha usando o salt
+        const hashedPassword = await bcrypt.hash(user.senha, salt);
         user.senha = hashedPassword;
         next();
     } catch (error) {
@@ -45,8 +49,12 @@ UsuarioSchema.pre('save', async function (next) {
 
 // Método para verificar a senha
 UsuarioSchema.methods.comparePassword = async function (senha) {
-    
-    return bcrypt.compare(senha, this.senha);
+    try {
+        // Compara a senha fornecida com a senha hash do usuário
+        return await bcrypt.compare(senha, this.senha);
+    } catch (error) {
+        throw error;
+    }
 };
 
 
