@@ -1,0 +1,2 @@
+--recursive
+tests/**/*.test.js

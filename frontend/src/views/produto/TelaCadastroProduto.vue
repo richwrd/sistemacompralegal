@@ -1,27 +1,36 @@
 <template>
   <div class="product-form">
     <h2>Cadastro de Produto</h2>
+
     <form @submit.prevent="cadastrarProduto">
-      <label for="nome">Nome do Produto:</label>
-      <input type="text" id="nome" v-model="produto.nome" required>
+      <div class="flex-container">
+        <div class="image-container">
+          <img v-if="produto.imagem" :src="produto.imagem" alt="Imagem do Produto">
+        </div>
 
-      <label for="preco">Preço:</label>
-      <input type="number" id="preco" v-model="produto.preco" required>
+        <div class="fields-container">
+          <label class="label" for="nome">Nome do Produto:</label>
+          <input class="input" type="text" id="nome" v-model="produto.nome" required>
 
-      <label for="quantidade">Quantidade:</label>
-      <input type="number" id="quantidade" v-model="produto.quantidade" required>
+          <label class="label" for="preco">Preço:</label>
+          <input class="input" type="number" id="preco" v-model="produto.preco" required>
 
-      <label for="descricao">Descrição:</label>
-      <textarea id="descricao" v-model="produto.descricao" required></textarea>
+          <label class="label">Imagem:</label>
+          <input class="input" type="text" id="imagem" v-model="produto.imagem">
 
-      <label for="imagem">Imagem:</label>
-      <input type="imagem" id="imagem" v-model="produto.imagem">
+          <label class="label" for="quantidade">Quantidade:</label>
+          <input class="input" type="number" id="quantidade" v-model="produto.quantidade" required>
 
-      <label for="tipo">Tipo:</label>
-      <input type="text" id="tipo" v-model="produto.tipo" required>
+          <label class="label" for="descricao">Descrição:</label>
+          <textarea class="input" id="descricao" v-model="produto.descricao" required></textarea>
 
-      <label for="categoria">Categoria:</label>
-      <input type="text" id="categoria" v-model="produto.categoria" required>
+          <label class="label" for="tipo">Tipo:</label>
+          <input class="input" type="text" id="tipo" v-model="produto.tipo" required>
+
+          <label class="label" for="categoria">Categoria:</label>
+          <input class="input" type="text" id="categoria" v-model="produto.categoria" required>
+        </div>
+      </div>
 
       <button type="submit">Cadastrar</button>
     </form>
@@ -73,39 +82,51 @@ export default {
 
 <style scoped>
 .product-form {
-  max-width: 600px;
-  margin: 150px auto;
-  padding: 20px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
-  border-radius: 8px;
+  max-width: 800px; /* Defina o máximo desejado para o formulário */
+  margin: 0 auto; /* Centraliza o formulário na tela */
 }
 
-.product-form label {
+.flex-container {
+  display: flex;
+  align-items: center; /* Alinha os itens ao topo */
+}
+
+.image-container {
+  margin-right: 40px; /* Adiciona um espaçamento entre a imagem e os campos */
+}
+
+.input {
+  width: 100%; /* Definir a largura para 100% para ocupar toda a largura disponível */
+  height: 44px;
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  margin: 20px;
+  align-items: start;
+  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border-color: #05060f;
+}
+
+.label,
+.input:hover + .label,
+.input:focus + .label {
+  color: #05060fc2;
+}
+
+.form{
+  align-items: center;
+}
+
+img {
   display: block;
-  margin-top: 15px;
-}
-
-.product-form input,
-.product-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.product-form button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.product-form button:hover {
-  background-color: #45a049;
+  max-width: 500px;
+  height: 400px;
 }
 </style>
