@@ -1,10 +1,9 @@
 <template>
-  
   <router-view></router-view> <!-- Renderiza a NavBar -->
-
-  <router-view name="telaProduto"></router-view>
   <router-view name="telaHome"></router-view>
   <router-view name="telaSobre"></router-view>
+  <router-view name="telaProduto"></router-view>
+  <router-view name="telaCadastroProduto"></router-view>
   
 </template>
 
@@ -23,6 +22,3 @@ export default {
   color: #2c3e50;
 }
 </style>
-
-
-

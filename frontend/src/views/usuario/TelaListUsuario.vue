@@ -1,10 +1,11 @@
 <template>
     <!-- HTML -->
+    <p>LIST USUARIO</p>
 </template>
 
 <script>
-export default {
-    name: 'TelaUsuario',
+export default{
+    name: 'TelaListUsuario',
     props: {
         msg: String
     }

@@ -1,23 +1,26 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      Para ter acesso ao código fonte deste projeto <a href="https://github.com/richwrd/sistemacompralegal" target="_blank" rel="noopener">clique aqui</a>. 
-    </p>
-    <h3>Integrantes</h3>
-    <ul>
-      <li><a href="https://github.com/AllanOgawa" target="_blank" rel="noopener">Allan Ogawa</a></li>
-      <p></p>
-      <li><a href="https://github.com/richwrd" target="_blank" rel="noopener">Eduardo Richard</a></li>
-      <p></p>
-      <li><a href="https://github.com/devhetor" target="_blank" rel="noopener">Heitor Brandolin</a></li>
-      <p></p>
-      <li><a href="https://github.com/KarlaDuarte87" target="_blank" rel="noopener">Karla Duarte</a></li>
-      <p></p>
-      <li><a href="https://github.com/Mariaeed" target="_blank" rel="noopener">Maria Eduarda</a></li>
-    </ul>
+  <div class="card-sobre">
+    <img src="../assets/unicesumar.png" style="height: 20%; width: 20%; margin-top: 60px;">
+    <h1 style="margin: 30px 0;">Engenharia de Software <br> Unicesumar - 7° Semestre</h1>
+    <div class="hello">
+      <h1>{{ msg }}</h1>
+      <p>
+        Para ter acesso ao código fonte deste projeto <a href="https://github.com/richwrd/sistemacompralegal" target="_blank" rel="noopener">clique aqui</a>. 
+      </p>
+      <h3 style="margin-bottom: 15px;">Integrantes</h3>
+      <ul>
+        <li><a href="https://github.com/AllanOgawa" target="_blank" rel="noopener">Allan Ogawa</a></li>
+        <p></p>
+        <li><a href="https://github.com/richwrd" target="_blank" rel="noopener">Eduardo Richard</a></li>
+        <p></p>
+        <li><a href="https://github.com/devhetor" target="_blank" rel="noopener">Heitor Brandolin</a></li>
+        <p></p>
+        <li><a href="https://github.com/KarlaDuarte87" target="_blank" rel="noopener">Karla Duarte</a></li>
+        <p></p>
+        <li style="margin-bottom: 50px"><a href="https://github.com/Mariaeed" target="_blank" rel="noopener">Maria Eduarda</a></li>
+      </ul>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -30,6 +33,14 @@ export default {
 </script>
 
 <style scoped>
+.card-sobre {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 80%;
+  margin: 40px 0px;
+  display:inline-block;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -43,6 +54,11 @@ li {
 }
 a {
   color: #42b983;
+  font-size: 16pt;
+}
+
+p {
+  font-size: 16pt;
 }
 
 /* Google Fonts Import Link */

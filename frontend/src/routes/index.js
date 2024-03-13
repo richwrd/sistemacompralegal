@@ -1,40 +1,71 @@
-import { createRouter, createWebHistory } from "vue-router";
-import NavBar from "../components/Navbar.vue";
-import telaProduto from "../views/Produto.vue"
-import telaHome from "../views/Home.vue"
-import telaSobre from "../components/Sobre.vue"
+import { createRouter, createWebHistory } from 'vue-router';
+
+//  COMPONENT
+import NavBar from './../components/Navbar.vue';
+
+//  VIEWS
+import telaHome from './../views/Home.vue';
+import telaSobre from './../views/Sobre.vue';
+
+import telaProduto from './../views/produto/TelaListProduto.vue';
+import telaCadastroProduto from './../views/produto/TelaCadastroProduto.vue';
+
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'App',
     components: {
-      default: NavBar, // Renderiza a NavBar como componente padrão
+      default: NavBar,
       telaHome: telaHome
-
-    }
-  },
-  {
-    path: '/produto',
-    name: 'Produto',
-    components: {
-      default: NavBar, // Renderiza a NavBar como componente padrão
-      telaProduto: telaProduto
+    },
+    meta: {
+      title: 'Home'
     }
   },
   {
     path: '/sobre',
     name: 'Sobre',
     components: {
-      default: NavBar, // Renderiza a NavBar como componente padrão
+      default: NavBar,
       telaSobre: telaSobre
+    },
+    meta: {
+      title: 'Sobre'
+    }
+  },
+  {
+    path: '/produtos',
+    name: 'Produto',
+    components: {
+      default: NavBar,
+      telaProduto: telaProduto
+    },
+    meta: {
+      title: 'Produtos'
+    }
+  },
+  {
+    path: '/produtos/cadastro',
+    name: 'telaCadastroProduto',
+    components: {
+      default: NavBar,
+      telaCadastroProduto: telaCadastroProduto
+    },
+    meta: {
+      title: 'Cadastro'
     }
   }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || 'Compre Legal';
+  next();
 });
 
 export default router;
