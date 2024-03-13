@@ -2,6 +2,9 @@
   "name": "compralegal",
   "version": "1.0.0",
   "scripts": {
+    "frontend": "cd frontend && npm run serve",
+    "backend": "cd backend && npm start",
+    "start": "npm run backend && npm run frontend"
   },
   "dependencies": {
     "@types/express": "^4.17.21"
