@@ -1,7 +1,7 @@
 <template>
   <div class="product-form">
-    <h2 class="title">Cadastro de Produto</h2>
-    <form @submit.prevent="cadastrarProduto">
+    <h2 class="title">Atualização de Produto</h2>
+    <form @submit.prevent="atualizarProduto">
       <div class="flex-container">
         <div class="image-container">
           <img v-if="produto.imagem" :src="produto.imagem" alt="Imagem do Produto">
@@ -14,7 +14,7 @@
           <label class="label" for="preco">Preço:</label>
           <input class="input" type="number" id="preco" v-model="produto.preco" required>
 
-          <label class="label">Imagem:</label>
+          <label class="label" for="imagem">Imagem:</label>
           <input class="input" type="text" id="imagem" v-model="produto.imagem">
 
           <label class="label" for="quantidade">Quantidade:</label>
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <button type="submit">Cadastrar</button>
+      <button type="submit">Atualizar</button>
     </form>
   </div>
 </template>
@@ -39,12 +39,12 @@
 <script>
 import axios from 'axios';
 
-
 export default {
-  name: 'TelaCadastroProduto',
+  name: 'TelaAtualizaProduto',
   data() {
     return {
       produto: {
+        id: this.$route.params.id, // Recebe o ID do produto da rota
         nome: '',
         preco: '',
         quantidade: '',
@@ -55,49 +55,57 @@ export default {
       }
     };
   },
+  created() {
+    this.carregarProduto();
+  },
   methods: {
-    async cadastrarProduto() {
+    // async carregarProduto() {
+    //   try {
+    //     const response = await axios.get(`http://localhost:3000/produto/${this.produto.id}`);
+    //     this.produto = response.data; // Atualiza os dados do produto com os recebidos do servidor
+    //   } catch (error) {
+    //     console.error('Erro ao carregar o produto:', error);
+    //   }
+    // },
+    async carregarProduto() {
       try {
-        // Envia os dados para o backend
-        await axios.post('http://localhost:3000/produto/create', this.produto);
-        console.log('Produto cadastrado com sucesso!', this.produto);
-        // Limpa os campos após o cadastro (opcional)
-        this.produto = {
-          nome: '',
-          preco: '',
-          quantidade: '',
-          descricao: '',
-          imagem: '',
-          tipo: '',
-          categoria: ''
-        };
+        if (!this.produto.id) {
+          console.error('ID do produto não definido.');
+          console.log(this.produto.id)
+          return;
+        }
+        const response = await axios.get(`http://localhost:3000/produto/${this.produto.id}`);
+        this.produto = response.data;
       } catch (error) {
-        console.error('Erro ao cadastrar o produto:', error.message);
+        console.error('Erro ao carregar o produto:', error);
+      }
+    },
+    async atualizarProduto() {
+      try {
+        await axios.put(`http://localhost:3000/produto/edit/${this.produto._id}`);
+        console.log('Produto atualizado com sucesso!', this.produto._id);
+      } catch (error) {
+        console.error('Erro ao atualizar o produto:', error);
       }
     }
-  },
+  }
 };
 </script>
 
 
 <style scoped>
-
-.title{
+.title {
   font-size: 50px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .product-form {
-  max-width: 800px;
-  /* Defina o máximo desejado para o formulário */
+  max-width: 1500px;
   margin: 0 auto;
-  /* Centraliza o formulário na tela */
 }
 
 .flex-container {
   display: flex;
-  align-items: center;
-  /* Alinha os itens ao topo */
 }
 
 
@@ -114,10 +122,12 @@ export default {
   border-radius: .5rem;
   padding: 0 1rem;
   border: 2px solid transparent;
-  font-size: 1rem;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 20px;
   align-items: start;
   transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+  margin-bottom: 30px;
 }
 
 .input:hover,
@@ -126,7 +136,12 @@ export default {
   border-color: #05060f;
 }
 
-.label,
+.label{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .input:hover+.label,
 .input:focus+.label {
   color: #05060fc2;
@@ -148,15 +163,14 @@ button {
   padding: 0.5em 2em;
   border: transparent;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  background: dodgerblue;
+  background: rgb(2, 0, 36);
   color: white;
   border-radius: 4px;
   margin-top: 10px;
 }
 
 button:hover {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(90deg, rgba(30, 144, 255, 1) 0%, rgba(0, 212, 255, 1) 100%);
+  background: rgb(248, 179, 50);
 }
 
 button:active {

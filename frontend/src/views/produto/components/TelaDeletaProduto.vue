@@ -1,6 +1,5 @@
 <template>
-    <h3>teste</h3>
-    <h1>aaaaaaaaa</h1>
+    <h2>TESTE</h2>
 </template>
 
 <script>
@@ -8,5 +7,4 @@ export default {
     name: 'telaDeletaProduto'
 }
 
-console.log('asqwdas')
 </script>

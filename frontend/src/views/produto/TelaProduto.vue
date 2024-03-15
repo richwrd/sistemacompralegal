@@ -1,25 +1,24 @@
 <template>
     <div>
         <div>
-        <ul class="nav-links">
-        <div style="display:flex; justify-content: flex-end; align-items: center;">
-            <li class="upward"><a href="/produtos/cadastro">Cadastro</a></li>
-            <li class="upward"><a href="/produtos/atualiza">Atualizar</a></li>
-            <li class="upward"><a href="/produtos/deleta">Deletar</a></li>
+            <ul class="nav-links">
+                <div style="display:flex; justify-content: flex-end; align-items: center;">
+                    <li class="upward"><a href="/produtos/cadastro">Cadastro</a></li>
+                    <li class="upward"><a href="/produtos/atualiza">Atualizar</a></li>
+                    <li class="upward"><a href="/produtos/deleta">Deletar</a></li>
+                </div>
+            </ul>
+            <h2>Produtos</h2>
         </div>
-        </ul>
-    </div>
         <div class="card-list">
-            <div v-for="produto in produtos" :key="produto._id" class="card-item">
+            <div v-for="produto in produtos" :key="produto._id" class="card-item" @click="editarProduto(produto._id)">
                 <h3>{{ produto.nome }}</h3>
-                <img :src="produto.imagem" alt="Imagem do Produto"/>
+                <img :src="produto.imagem" alt="Imagem do Produto" />
                 <p>{{ produto.descricao }}</p>
                 <h3>R$ {{ produto.preco }}</h3>
                 <span :class="produto.categoria">{{ produto.categoria }}</span>
             </div>
         </div>
-        <div>
-    </div>
     </div>
 </template>
 
@@ -30,7 +29,7 @@ export default {
     name: 'TelaProduto',
     data() {
         return {
-            produtos: [],
+            produtos: []
         };
     },
     created() {
@@ -47,6 +46,15 @@ export default {
                 console.error('Erro ao obter produtos:', error);
             }
         },
+        editarProduto(idProduto) {
+            try {
+                this.$router.push({ name: 'telaAtualizaProduto', params: { id: idProduto } });
+                console.log('ID do produto enviado:', idProduto);
+                console.log(this.produto);
+            } catch (error) {
+                console.error('Erro ao editar o produto:', error);
+            }
+        },
     },
 };
 </script>
@@ -56,11 +64,11 @@ export default {
 
 .card-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    max-width: 1250px;
-    margin: 150px auto;
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    max-width: 1500px;
+    margin: 16px auto;
     padding: 20px;
-    gap: 20px;
+    gap: 30px;
 }
 
 .card-list .card-item {
@@ -79,11 +87,15 @@ export default {
     border: 2px solid #000;
 }
 
+h2 {
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .card-list .card-item img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: 8px;
-    object-fit: contain;
+    max-width: 300px;
+    max-height: 250px;
+    padding: 15px;
 }
 
 .card-list span {
@@ -96,9 +108,13 @@ export default {
     font-weight: 600;
 }
 
+.card-list p {
+    margin-top: 20px;
+}
+
 .card-list .developer {
-    background-color: #f7dff5;
-    color: #b22485;
+    background-color: #f7f599;
+    color: #b27424;
 }
 
 .card-list .designer {
@@ -131,6 +147,7 @@ export default {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -154,12 +171,14 @@ body {
 
 
 .nav-links {
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
+    position: relative;
+    margin-top: 20px;
+    display: table;
+    justify-content: center;
+    background: #eebc16;
     padding: 20px 15px;
     border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
 }
 
 .nav-links li {
@@ -169,7 +188,7 @@ body {
 
 .nav-links li a {
     position: relative;
-    color: #333;
+    color: #ffffff;
     font-size: 20px;
     font-weight: 500;
     padding: 6px 0;
@@ -183,7 +202,7 @@ body {
     left: 0;
     height: 3px;
     width: 0%;
-    background: #34efdf;
+    background: #ef5034;
     border-radius: 12px;
     transition: all 0.4s ease;
 }

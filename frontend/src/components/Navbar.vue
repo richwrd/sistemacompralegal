@@ -7,7 +7,6 @@
         <div style="display:flex; justify-content: flex-end; align-items: center;">
             <li class="upward"><a href="/usuario/:id">Perfil</a></li>
             <li class="upward"><a href="/produtos">Produto</a></li>
-            <li class="upward"><a href="/produtos/cadastro">Cadastro</a></li>
             <li class="forward"><a href="/sobre">Sobre</a></li>
             <li class="forward"><a href="/admin">Administração</a></li>
         </div>

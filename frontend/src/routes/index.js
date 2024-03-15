@@ -6,11 +6,10 @@ import NavBar from './../components/Navbar.vue';
 //  VIEWS
 import telaHome from './../views/Home.vue';
 import telaSobre from './../views/Sobre.vue';
-
-import telaProduto from './../views/produto/TelaListProduto.vue';
-import telaCadastroProduto from './../views/produto/TelaCadastroProduto.vue';
-import telaAtualizaProduto from './../views/produto/TelaAtualizaProduto.vue';
-import telaDeletaProduto from './../views/produto/TelaDeletaProduto.vue';
+import telaCadastroProduto from '../views/produto/components/TelaCadastraProduto.vue';
+import telaProduto from '../views/produto/TelaProduto.vue';
+import telaAtualizaProduto from '../views/produto/components/TelaAtualizaProduto.vue';
+import telaDeletaProduto from '../views/produto/components/TelaDeletaProduto.vue';
 
 
 const routes = [
@@ -48,7 +47,18 @@ const routes = [
     }
   },
   {
-    path: '/produtos/cadastro',
+    path: '/produtos/Atualiza/:id',
+    name: 'telaAtualizaProduto',
+    components: {
+      default: NavBar,
+      telaAtualizaProduto: telaAtualizaProduto
+    },
+    meta: {
+      title: 'Atualiza'
+    }
+  },
+  {
+    path: '/produtos/cadastro/',
     name: 'telaCadastroProduto',
     components: {
       default: NavBar,
@@ -56,17 +66,6 @@ const routes = [
     },
     meta: {
       title: 'Cadastro'
-    }
-  },
-  {
-    path: '/produtos/atualiza',
-    name: 'telaAtualizaProduto',
-    components: {
-      default: NavBar,
-      telaAtualizaProduto: telaAtualizaProduto
-    },
-    meta: {
-      title: 'Atualza'
     }
   },
   {
