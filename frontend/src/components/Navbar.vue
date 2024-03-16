@@ -4,8 +4,11 @@
         <a href="/" style="width: 10%; height: 10%;">
             <img src="../assets/logo.png" style="width: 100%; height: 100%;">
         </a>
+        
+        <AuthComponent/>
+        
         <div style="display:flex; justify-content: flex-end; align-items: center;">
-            <li class="upward"><a href="/auth/login">Perfil</a></li>
+            <li class="upward"><a href="/auth/register">Perfil</a></li>
             <li class="upward"><a href="/produtos">Produto</a></li>
             <li class="forward"><a href="/sobre">Sobre</a></li>
             <li class="forward"><a href="/admin">Administração</a></li>
@@ -17,6 +20,9 @@
 <script>
     export default {
         name: 'NavBar',
+        components: {
+            AuthComponent: () => import('./AuthComponent.vue')
+        },
         props: {
             msg: String
         }
