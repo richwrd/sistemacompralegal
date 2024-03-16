@@ -11,14 +11,12 @@ export default class AuthController {
         try {
             const usuario = await Usuario.findOne({ email: req.body.email });
             if (!usuario) {
-                console.log('if1')
                 return res.status(400).send('Usuário não encontrado.');
             }
 
             const senhaValida = await usuario.comparePassword(req.body.senha);
             if (!senhaValida) {
 
-                console.log('if2')
                 return res.status(400).send('Senha inválida!');
             }
 
@@ -66,6 +64,23 @@ export default class AuthController {
             console.log(err);
             res.status(500).send('ERRO na criação do usuário!');
         }
+    };
+
+    // Verificador de   token
+    static verifyToken(req, res, next) {
+        const token = req.headers['authorization'];
+
+        if (!token) {
+            return res.status(403).send('Token não fornecido!');
+        }
+
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+            if (err) {
+                return res.status(401).send('Falha ao autenticar o token!');
+            }
+            req.userId = decoded.id;
+            next();
+        });
     };
 
 }

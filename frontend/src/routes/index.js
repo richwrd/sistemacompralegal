@@ -4,10 +4,28 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NavBar from './../components/Navbar.vue';
 
 //  VIEWS
-// import telaLogin from '../views/TelaLogin.vue';
 import telaHome from './../views/Home.vue';
 import telaSobre from './../views/Sobre.vue';
+import telaLogin from './../views/TelaLogin.vue';
+import telaRegister from './../views/TelaRegister.vue';
 import telaProduto from './../views/produto/TelaListProduto.vue';
+
+
+// Middleware de autenticação
+const authMiddleware = (to, from, next) => {
+  // Verifica se o usuário está autenticado
+  const isAuthenticated = localStorage.getItem('usuario') !== null;
+
+  // Se o usuário estiver autenticado, permita o acesso à rota
+  if (isAuthenticated || to.path === '/auth/login' || to.path === '/auth/register') {
+    next();
+  } else {
+    // Caso contrário, redirecione para a página de login
+    next('/auth/login');
+  }
+};
+
+
 
 const routes = [
   {
@@ -21,16 +39,6 @@ const routes = [
       title: 'Home'
     }
   },
-  // {
-  //   path: '/login',
-  //   name: 'Login',
-  //   components: {
-  //     telaLogin: telaLogin
-  //   },
-  //   meta: {
-  //     title: 'Login'
-  //   }
-  // },
   {
     path: '/sobre',
     name: 'Sobre',
@@ -40,7 +48,9 @@ const routes = [
     },
     meta: {
       title: 'Sobre'
-    }
+    },
+    // Definindo o middleware Auth (verificacao de login)
+    beforeEnter: authMiddleware
   },
   {
     path: '/produtos',
@@ -52,13 +62,37 @@ const routes = [
     meta: {
       title: 'Produtos'
     }
-  }
+  },
+  {
+    path: '/auth/login',
+    name: 'Compre Legal - Login',
+    components: {
+      default: NavBar,
+      telaLogin: telaLogin
+    },
+    meta: {
+      title: 'Fazer Login'
+    }
+  },
+  {
+    path: '/auth/register',
+    name: 'Compre Legal Login',
+    components: {
+      default: NavBar,
+      telaRegister: telaRegister
+    },
+    meta: {
+      title: 'Registre-se!'
+    }
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
 });
+
+
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'Compre Legal';

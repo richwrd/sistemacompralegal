@@ -1,4 +1,5 @@
 <template>
+  <AuthComponent /> 
   <div class="card-sobre">
     <img src="../assets/unicesumar.png" style="height: 20%; width: 20%; margin-top: 60px;">
     <h1 style="margin: 30px 0;">Engenharia de Software <br> Unicesumar - 7° Semestre</h1>
@@ -26,10 +27,15 @@
 <script>
 export default {
   name: 'telaSobre',
+  components: {
+    AuthComponent: () => import('../components/AuthComponent.vue')
+  },
   props: {
     msg: String
   }
 }
+
+
 </script>
 
 <style scoped>
@@ -133,4 +139,4 @@ body{
   transform: scaleX(1);
   transform-origin: left;
 }
-</style>
+</style>../components/AuthComponent.vue

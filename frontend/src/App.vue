@@ -1,9 +1,10 @@
 <template>
   <router-view></router-view> <!-- Renderiza a NavBar -->
-  <router-view name="telaLogin"></router-view>
   <router-view name="telaHome"></router-view>
+  <router-view name="telaLogin"></router-view>
   <router-view name="telaSobre"></router-view>
   <router-view name="telaProduto"></router-view>
+  <router-view name="telaRegister"></router-view>
   
 </template>
 
