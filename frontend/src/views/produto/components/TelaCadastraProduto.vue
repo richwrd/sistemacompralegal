@@ -1,165 +1,217 @@
 <template>
-    <div class="product-form">
-      <h2 class="title">Cadastro de Produto</h2>
-      <form @submit.prevent="cadastrarProduto">
-        <div class="flex-container">
-          <div class="image-container">
-            <img v-if="produto.imagem" :src="produto.imagem" alt="Imagem do Produto">
-          </div>
-  
-          <div class="fields-container">
-            <label class="label" for="nome">Nome do Produto:</label>
-            <input class="input" type="text" id="nome" v-model="produto.nome" required>
-  
-            <label class="label" for="preco">Preço:</label>
-            <input class="input" type="number" id="preco" v-model="produto.preco" required>
-  
-            <label class="label">Imagem:</label>
-            <input class="input" type="text" id="imagem" v-model="produto.imagem">
-  
-            <label class="label" for="quantidade">Quantidade:</label>
-            <input class="input" type="number" id="quantidade" v-model="produto.quantidade" required>
-  
-            <label class="label" for="descricao">Descrição:</label>
-            <textarea class="input" id="descricao" v-model="produto.descricao" required></textarea>
-  
-            <label class="label" for="tipo">Tipo:</label>
-            <input class="input" type="text" id="tipo" v-model="produto.tipo" required>
-  
-            <label class="label" for="categoria">Categoria:</label>
-            <input class="input" type="text" id="categoria" v-model="produto.categoria" required>
-          </div>
-        </div>
-  
-        <button type="submit">Cadastrar</button>
-      </form>
+  <div class="product-form">
+    <h2 class="title">Cadastro de Produto</h2>
+    <div class="alert-card-container">
+      <div v-if="produtoCadastrado" class="alert-card" :class="{ 'show-alert': produtoCadastrado }">
+        <AlertSuccess />
+      </div>
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  
-  export default {
-    name: 'TelaCadastroProduto',
-    data() {
-      return {
-        produto: {
+    <form @submit.prevent="cadastrarProduto">
+      <div class="flex-container">
+        <div class="image-container">
+          <img v-if="produto.imagem" :src="produto.imagem" alt="Imagem do Produto">
+        </div>
+
+        <div class="fields-container">
+          <label class="label" for="nome">Nome do Produto:</label>
+          <input class="input" type="text" id="nome" v-model="produto.nome" required>
+
+          <label class="label" for="preco">Preço:</label>
+          <input class="input" type="number" id="preco" v-model="produto.preco" required>
+
+          <label class="label" for="imagem">Imagem:</label>
+          <input class="input" type="text" id="imagem" v-model="produto.imagem">
+
+          <label class="label" for="quantidade">Quantidade:</label>
+          <input class="input" type="number" id="quantidade" v-model="produto.quantidade" required>
+
+          <label class="label" for="descricao">Descrição:</label>
+          <textarea class="input" id="descricao" v-model="produto.descricao" required></textarea>
+
+          <label class="label" for="tipo">Tipo:</label>
+          <input class="input" type="text" id="tipo" v-model="produto.tipo" required>
+
+          <label class="label" for="categoria">Categoria:</label>
+          <input class="input" type="text" id="categoria" v-model="produto.categoria" required>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button">Cadastrar</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+import AlertSuccess from '@/components/AlertSuccess.vue';
+
+export default {
+  name: 'TelaCadastroProduto',
+  components: {
+    AlertSuccess
+  },
+  data() {
+    return {
+      produtoCadastrado: false,
+      produto: {
+        nome: '',
+        preco: '',
+        quantidade: '',
+        imagem: '',
+        descricao: '',
+        tipo: '',
+        categoria: ''
+      }
+    };
+  },
+  methods: {
+    async cadastrarProduto() {
+      try {
+        // Envia os dados para o backend
+        await axios.post('http://localhost:3000/produto/create', this.produto);
+        this.produtoCadastrado = true;
+        // Limpa os campos após o cadastro
+        console.log(this.produto);
+        this.produto = {
           nome: '',
           preco: '',
           quantidade: '',
-          imagem: '',
           descricao: '',
+          imagem: '',
           tipo: '',
           categoria: ''
-        }
-      };
-    },
-    methods: {
-      async cadastrarProduto() {
-        try {
-          // Envia os dados para o backend
-          await axios.post('http://localhost:3000/produto/create', this.produto);
-          console.log('Produto cadastrado com sucesso!', this.produto);
-          // Limpa os campos após o cadastro (opcional)
-          this.produto = {
-            nome: '',
-            preco: '',
-            quantidade: '',
-            descricao: '',
-            imagem: '',
-            tipo: '',
-            categoria: ''
-          };
-        } catch (error) {
-          console.error('Erro ao cadastrar o produto:', error.message);
-        }
+        };
+      } catch (error) {
+        console.error('Erro ao cadastrar o produto:', error.message);
       }
-    },
-  };
-  </script>
-  
-  
-  <style scoped>
-  
-  .title{
-    font-size: 50px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  },
+};
+</script>
+
+
+<style scoped>
+.title {
+  font-size: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.product-form {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.image-container {
+  margin-right: 40px;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  background-color: #05060f1a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  margin-bottom: 30px;
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border-color: #05060f;
+}
+
+.label {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.input:hover+.label,
+.input:focus+.label {
+  color: #05060fc2;
+  font-weight: bolder;
+}
+
+img {
+  display: block;
+  max-width: 500px;
+  height: 400px;
+}
+
+button {
+  font-size: 24px;
+  padding: 0.5em 2em;
+  border: transparent;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  background: rgb(2, 0, 36);
+  color: white;
+  border-radius: 4px;
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+button:hover {
+  background: rgb(248, 179, 50);
+}
+
+button:active {
+  transform: translate(0em, 0.2em);
+}
+
+.alert-card {
+  display: inline-block;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(0);
   }
-  
-  .product-form {
-    max-width: 800px;
-    /* Defina o máximo desejado para o formulário */
-    margin: 0 auto;
-    /* Centraliza o formulário na tela */
+
+  to {
+    transform: translateY(100);
   }
-  
-  .flex-container {
-    display: flex;
-    align-items: center;
-    /* Alinha os itens ao topo */
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(-100%);
   }
-  
-  
-  .image-container {
-    margin-right: 40px;
-    /* Adiciona um espaçamento entre a imagem e os campos */
+
+  to {
+    transform: translateY(0);
   }
-  
-  .input {
-    width: 100%;
-    /* Definir a largura para 100% para ocupar toda a largura disponível */
-    height: 44px;
-    background-color: #05060f0a;
-    border-radius: .5rem;
-    padding: 0 1rem;
-    border: 2px solid transparent;
-    font-size: 1rem;
-    margin: 20px;
-    align-items: start;
-    transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.alert-card {
+  display: inline;
+  position: absolute;
+  left: 77%;
+  animation: slideIn 1s forwards;
+  animation: fadeInOut 3s forwards;
+  padding: 40px;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
   }
-  
-  .input:hover,
-  .input:focus {
-    outline: none;
-    border-color: #05060f;
+
+  50% {
+    opacity: 1;
   }
-  
-  .label,
-  .input:hover+.label,
-  .input:focus+.label {
-    color: #05060fc2;
-    font-weight: bolder;
+
+  100% {
+    opacity: 0;
   }
-  
-  .form {
-    align-items: center;
-  }
-  
-  img {
-    display: block;
-    max-width: 500px;
-    height: 400px;
-  }
-  
-  button {
-    font-size: 24px;
-    padding: 0.5em 2em;
-    border: transparent;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    background: dodgerblue;
-    color: white;
-    border-radius: 4px;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(30, 144, 255, 1) 0%, rgba(0, 212, 255, 1) 100%);
-  }
-  
-  button:active {
-    transform: translate(0em, 0.2em);
-  }
-  </style>
+}
+</style>

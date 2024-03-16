@@ -9,7 +9,6 @@ import telaSobre from './../views/Sobre.vue';
 import telaCadastroProduto from '../views/produto/components/TelaCadastraProduto.vue';
 import telaProduto from '../views/produto/TelaProduto.vue';
 import telaAtualizaProduto from '../views/produto/components/TelaAtualizaProduto.vue';
-import telaDeletaProduto from '../views/produto/components/TelaDeletaProduto.vue';
 
 
 const routes = [
@@ -66,17 +65,6 @@ const routes = [
     },
     meta: {
       title: 'Cadastro'
-    }
-  },
-  {
-    path: '/produtos/deleta',
-    name: 'telaDeletaProduto',
-    components: {
-      default: NavBar,
-      TelaDeletaProduto: telaDeletaProduto
-    },
-    meta: {
-      title: 'Deleta'
     }
   },
 ];

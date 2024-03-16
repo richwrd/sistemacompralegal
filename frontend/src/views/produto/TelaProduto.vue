@@ -1,14 +1,12 @@
 <template>
     <div>
         <div>
+            <h2>Produtos</h2>
             <ul class="nav-links">
                 <div style="display:flex; justify-content: flex-end; align-items: center;">
                     <li class="upward"><a href="/produtos/cadastro">Cadastro</a></li>
-                    <li class="upward"><a href="/produtos/atualiza">Atualizar</a></li>
-                    <li class="upward"><a href="/produtos/deleta">Deletar</a></li>
                 </div>
             </ul>
-            <h2>Produtos</h2>
         </div>
         <div class="card-list">
             <div v-for="produto in produtos" :key="produto._id" class="card-item" @click="editarProduto(produto._id)">
@@ -176,9 +174,10 @@ body {
     display: table;
     justify-content: center;
     background: #eebc16;
-    padding: 20px 15px;
+    padding: 10px 15px;
     border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
 }
 
 .nav-links li {

@@ -6,6 +6,7 @@
   <router-view name="telaAtualizaProduto"></router-view>
   <router-view name="telaCadastroProduto"></router-view>
   <router-view name="telaDeletaProduto"></router-view>
+  <router-view name="alertSuccess"></router-view>
   
 </template>
 
