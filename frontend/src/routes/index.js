@@ -11,7 +11,8 @@ import telaRegister from './../views/TelaRegister.vue';
 import telaProduto from './../views/produto/TelaListProduto.vue';
 
 
-// Middleware de autenticação
+// Middleware de autenticação (da pra fazer diferenciado, para diferentes tipos de acessos pedir login)
+
 const authMiddleware = (to, from, next) => {
   // Verifica se o usuário está autenticado
   const isAuthenticated = localStorage.getItem('usuario') !== null;

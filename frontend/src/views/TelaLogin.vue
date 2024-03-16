@@ -49,6 +49,9 @@ export default {
                 localStorage.setItem("usuario", JSON.stringify(response.data));
 
                 console.log('Usuário conectado:', response.data);
+
+                // Redirecionar para a página inicial após o login bem-sucedido
+                this.$router.push('/');
             } catch (error) {
                 console.error('Erro ao criar usuário:', error);
             }
