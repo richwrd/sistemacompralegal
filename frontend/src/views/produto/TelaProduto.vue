@@ -79,6 +79,7 @@ export default {
     text-decoration: none;
     border: 2px solid transparent;
     transition: border 0.5s ease;
+    max-height: 1000px;
 }
 
 .card-list .card-item:hover {
@@ -86,6 +87,7 @@ export default {
 }
 
 h2 {
+    margin-top: 20px;
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
