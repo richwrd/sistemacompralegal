@@ -33,7 +33,7 @@
             <input class="input" type="password" v-model="confirmasenha" placeholder="" required>
             <span>Confirme sua senha</span>
         </label>
-        <button class="submit">Submit</button>
+        <button class="submit">Enviar</button>
         <p class="signin">Já tem uma conta?  <a href="/auth/login">Fazer login</a> </p>
     </form>
 </template>

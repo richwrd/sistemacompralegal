@@ -12,7 +12,7 @@
                 <li class="forward"><a href="/admin">Administração</a></li>
 
 
-                <!-- <AuthComponent v-slot="{ authenticated }"> -->
+                <AuthComponent v-slot="{ authenticated }">
 
                     <button v-if="!authenticated" class="animated-button" onclick="window.location.href='/auth/login'">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -28,9 +28,10 @@
                             </path>
                         </svg>
                     </button>
+                </AuthComponent>
 
-                <!-- </AuthComponent> -->
-            
+                <li class="upward" v-if="authenticated"><a href="#" @click="logout">Logout</a></li>
+
 
             </div>
         </ul>
@@ -41,9 +42,9 @@
 <script>
 export default {
     name: 'NavBar',
-    // components: {
-    //     AuthComponent: () => import('./AuthComponent.vue')
-    // },
+    components: {
+        AuthComponent: () => import('./AuthComponent.vue')
+    },
     props: {
         msg: String
     }
@@ -186,7 +187,7 @@ body {
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background-color:  rgb(5, 131, 16);
+    background-color: rgb(5, 131, 16);
     border-radius: 50%;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
