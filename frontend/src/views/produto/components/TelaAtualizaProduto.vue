@@ -17,7 +17,7 @@
           <input class="input" type="text" id="nome" v-model="produto.nome" required>
 
           <label class="label" for="preco">Preço:</label>
-          <input class="input" type="number" id="preco" v-model="produto.preco" required>
+          <input class="input" type="text" id="preco" v-model="produto.preco" required>
 
           <label class="label" for="imagem">Imagem:</label>
           <input class="input" type="text" id="imagem" v-model="produto.imagem">
@@ -158,7 +158,7 @@ export default {
 }
 
 textarea {
-  
+  max-height: max-content;
 }
 
 img {
