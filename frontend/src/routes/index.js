@@ -9,6 +9,8 @@ import telaSobre from './../views/Sobre.vue';
 import telaLogin from './../views/TelaLogin.vue';
 import telaRegister from './../views/TelaRegister.vue';
 import telaProduto from './../views/produto/TelaListProduto.vue';
+import TelaMinhaConta from './../views/usuario/TelaMinhaConta.vue';
+
 
 
 // Middleware de autenticação (da pra fazer diferenciado, para diferentes tipos de acessos pedir login)
@@ -84,6 +86,17 @@ const routes = [
     },
     meta: {
       title: 'Registre-se!'
+    }
+  },
+  {
+    path: '/usuario/TelaMinhaConta',
+    name: 'MinhaConta',
+    components: {
+      default: NavBar,
+      telaProduto: TelaMinhaConta
+    },
+    meta: {
+      title: 'TelaMinhaConta'
     }
   },
 ];

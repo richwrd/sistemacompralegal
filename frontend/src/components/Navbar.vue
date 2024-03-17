@@ -10,6 +10,7 @@
                 <li class="upward"><a href="/produtos">Produto</a></li>
                 <li class="forward"><a href="/sobre">Sobre</a></li>
                 <li class="forward"><a href="/admin">Administração</a></li>
+                <li class="forward"><a href="/usuario/TelaMinhaConta">Conta</a></li>
 
 
                 <AuthComponent v-slot="{ authenticated }">

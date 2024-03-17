@@ -1,6 +1,6 @@
 <template>
     <!-- HTML -->
-    <p>HOME</p>
+    <p>HOME 123</p>
 </template>
 
 <script>

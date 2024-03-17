@@ -5,7 +5,7 @@
   <router-view name="telaSobre"></router-view>
   <router-view name="telaProduto"></router-view>
   <router-view name="telaRegister"></router-view>
-  
+  <router-view name="TelaMinhaConta"></router-view>
 </template>
 
 <script>
