@@ -88,6 +88,8 @@ export default {
         console.log('Produto atualizado com sucesso!', this.produto._id);
         this.produto = response.data;
         this.produtoAtualizado = true;
+
+        this.$router.push({ name: 'Produtos' });
       } catch (error) {
         console.error('Erro ao atualizar o produto:', error);
       }
@@ -98,6 +100,8 @@ export default {
         console.log('Produto deleteado com sucesso!', this.produto._id);
         this.produto = response.data;
         this.produtoAtualizado = true;
+
+        this.$router.push({ name: 'Produtos' });
       } catch (error) {
         console.error('Erro ao deletar o produto:', error);
       }

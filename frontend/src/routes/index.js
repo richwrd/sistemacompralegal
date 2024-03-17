@@ -122,7 +122,7 @@ const routes = [
   },
   {
     path: '/produtos',
-    name: 'Produto',
+    name: 'Produtos',
     components: {
       default: NavBar,
       telaListProduto: telaListProduto
