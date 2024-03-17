@@ -6,8 +6,8 @@
   <router-view name="telaRegister"></router-view>
   
   <router-view name="telaSobre"></router-view>
-  <router-view name="telaProduto"></router-view>
   
+  <router-view name="telaListProduto"></router-view>
   <router-view name="telaAtualizaProduto"></router-view>
   <router-view name="telaCadastroProduto"></router-view>
   <router-view name="telaDeletaProduto"></router-view>

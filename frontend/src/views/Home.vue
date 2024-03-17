@@ -64,7 +64,17 @@ export default {
     methods: {
         async fetchProdutos() {
             try {
-                const response = await axios.get('http://localhost:3000/produto/list');
+
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    timeout: 5000 // Tempo limite em milissegundos (por exemplo, 5 segundos)
+                };
+
+                const response = await axios.get('http://localhost:3000/produto/list', null, config);
+
+
                 let categorias = response.data.produtos.map((item) => item.categoria);
                 categorias = categorias.filter((value, index) => categorias.indexOf(value) === index);
                 
@@ -81,9 +91,9 @@ export default {
                         })
                     });
                 }
-            console.log(this.categorias)
+                console.log(this.categorias)
             } catch (error) {
-                console.error('Erro ao obter produtos:', error);
+                console.error('Erro ao obter produtos (List):', error);
             }
         },
 
@@ -91,7 +101,7 @@ export default {
             try {
                 this.$router.push({ name: 'telaAtualizaProduto', params: { id: idProduto } });
                 console.log('ID do produto enviado:', idProduto);
-                console.log(this.produto);
+                // console.log(this.produto);
             } catch (error) {
                 console.error('Erro ao editar o produto:', error);
             }

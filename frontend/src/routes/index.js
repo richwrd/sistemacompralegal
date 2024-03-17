@@ -8,13 +8,13 @@ import NavBar from './../components/Navbar.vue';
 import telaHome from './../views/Home.vue';
 import telaSobre from './../views/Sobre.vue';
 
-import telaProduto from '../views/produto/TelaProduto.vue';
+import telaListProduto from '../views/produto/TelaListProduto.vue';
 import telaCadastroProduto from '../views/produto/components/TelaCadastraProduto.vue';
 import telaAtualizaProduto from '../views/produto/components/TelaAtualizaProduto.vue';
 
 import telaLogin from './../views/TelaLogin.vue';
 import telaRegister from './../views/TelaRegister.vue';
-import TelaMinhaConta from './../views/usuario/TelaMinhaConta.vue';
+import telaEditUser from './../views/usuario/TelaMinhaConta.vue';
 
 
 
@@ -71,12 +71,10 @@ const authMiddlewareLogin = (to, from, next) => {
 
 
 
-
-
 const routes = [
   {
     path: '/',
-    name: 'App',
+    name: 'Home',
     components: {
       default: NavBar,
       telaHome: telaHome
@@ -127,14 +125,14 @@ const routes = [
     name: 'Produto',
     components: {
       default: NavBar,
-      telaProduto: telaProduto
+      telaListProduto: telaListProduto
     },
     meta: {
       title: 'Produtos'
     }
   },
   {
-    path: '/produtos/Atualiza/:id',
+    path: '/produtos/edit/:id',
     name: 'telaAtualizaProduto',
     components: {
       default: NavBar,
@@ -142,10 +140,11 @@ const routes = [
     },
     meta: {
       title: 'Atualiza'
-    }
+    },
+    beforeEnter: authMiddleware
   },
   {
-    path: '/produtos/cadastro/',
+    path: '/produto/create',
     name: 'telaCadastroProduto',
     components: {
       default: NavBar,
@@ -153,18 +152,20 @@ const routes = [
     },
     meta: {
       title: 'Cadastro' 
-    }
+    },
+    beforeEnter: authMiddleware
   },
   {
-    path: '/usuario/TelaMinhaConta',
+    path: '/usuario/edit/:id',
     name: 'MinhaConta',
     components: {
       default: NavBar,
-      telaProduto: TelaMinhaConta
+      telaEditUser: telaEditUser
     },
     meta: {
-      title: 'TelaMinhaConta'
-    }
+      title: 'Minha Conta'
+    },
+    beforeEnter: authMiddleware
   },
 ];
 
