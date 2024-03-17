@@ -2,7 +2,6 @@ import Usuario from '../models/UsuarioModel.js';
 
 export default class UsuarioController {
 
-
     static async editUsuario(req, res) {
         try {
             const { id } = req.params;

@@ -7,9 +7,13 @@ import NavBar from './../components/Navbar.vue';
 //  VIEWS
 import telaHome from './../views/Home.vue';
 import telaSobre from './../views/Sobre.vue';
+
+import telaProduto from '../views/produto/TelaProduto.vue';
+import telaCadastroProduto from '../views/produto/components/TelaCadastraProduto.vue';
+import telaAtualizaProduto from '../views/produto/components/TelaAtualizaProduto.vue';
+
 import telaLogin from './../views/TelaLogin.vue';
 import telaRegister from './../views/TelaRegister.vue';
-import telaProduto from './../views/produto/TelaListProduto.vue';
 
 
 // Middleware de autenticação (da pra fazer diferenciado, para diferentes tipos de acessos pedir login)
@@ -93,17 +97,6 @@ const routes = [
     beforeEnter: authMiddleware
   },
   {
-    path: '/produtos',
-    name: 'Produto',
-    components: {
-      default: NavBar,
-      telaProduto: telaProduto
-    },
-    meta: {
-      title: 'Produtos'
-    }
-  },
-  {
     path: '/auth/login',
     name: 'Compre Legal - Login',
     components: {
@@ -127,14 +120,45 @@ const routes = [
       title: 'Registre-se!'
     }
   },
+  {
+    path: '/produtos',
+    name: 'Produto',
+    components: {
+      default: NavBar,
+      telaProduto: telaProduto
+    },
+    meta: {
+      title: 'Produtos'
+    }
+  },
+  {
+    path: '/produtos/Atualiza/:id',
+    name: 'telaAtualizaProduto',
+    components: {
+      default: NavBar,
+      telaAtualizaProduto: telaAtualizaProduto
+    },
+    meta: {
+      title: 'Atualiza'
+    }
+  },
+  {
+    path: '/produtos/cadastro/',
+    name: 'telaCadastroProduto',
+    components: {
+      default: NavBar,
+      telaCadastroProduto: telaCadastroProduto
+    },
+    meta: {
+      title: 'Cadastro' 
+    }
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
 });
-
-
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'Compre Legal';

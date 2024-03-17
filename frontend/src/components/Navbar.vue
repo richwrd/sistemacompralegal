@@ -194,7 +194,6 @@ body {
     transform-origin: left;
 }
 
-
 .animated-button {
     position: relative;
     display: flex;

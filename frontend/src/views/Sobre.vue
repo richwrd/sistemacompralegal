@@ -31,8 +31,6 @@ export default {
     msg: String
   }
 }
-
-
 </script>
 
 <style scoped>
