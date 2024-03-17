@@ -8,8 +8,19 @@
 
 ## ✅ Start
 
-Utilize na pasta raiz do projeto:
+Servidor /backend
 
 ```bash
 npm start
+```
+
+Servidor /frontend
+
+```bash
+npm run serve
+```
+
+Testes /backend 
+```bash
+npm run test
 ```

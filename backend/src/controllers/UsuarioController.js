@@ -2,34 +2,6 @@ import Usuario from '../models/UsuarioModel.js';
 
 export default class UsuarioController {
 
-    static async createUsuario(req, res) {
-        try {
-            const { nome, sobrenome, idade, imagem } = req.body;
-            const usuario = new Usuario({ nome, sobrenome, idade, imagem });
-            
-            await usuario.save();
-
-            return res.status(201).json(usuario);
-        } catch (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Erro interno do servidor' });
-        }
-    }
-
-    static async createUsuarioPost(req, res) {
-        try {
-            const { nome, sobrenome, idade, imagem } = req.body;
-            const usuario = new Usuario({ nome, sobrenome, idade, imagem });
-            
-            await usuario.save();
-            
-            return res.status(201).json(usuario);
-        } catch (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Erro interno do servidor' });
-        }
-    }
-
     static async editUsuario(req, res) {
         try {
             const { id } = req.params;
@@ -47,8 +19,8 @@ export default class UsuarioController {
     static async editUsuarioPost(req, res) {
         try {
             const { id } = req.params;
-            const { nome, sobrenome, idade, imagem } = req.body;
-            const updatedUsuario = { nome, sobrenome, idade, imagem };
+            const { nome, sobrenome, idade, imagem, email, senha, confirmacaosenha} = req.body;
+            const updatedUsuario = { nome, sobrenome, idade, imagem, email, senha, confirmacaosenha };
 
             const usuario = await Usuario.findByIdAndUpdate(id, updatedUsuario, { new: true });
 

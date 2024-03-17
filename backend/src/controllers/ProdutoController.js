@@ -12,9 +12,7 @@ export default class ProdutoController {
                 .limit(limit);
 
             const total = await Produto.countDocuments();
-
             // console.log(produtos, total, page, Math.ceil(total / limit));
-
             return res.status(200).json({
                 produtos,
                 total,

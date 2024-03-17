@@ -1,7 +1,7 @@
 {
     "files.exclude": {
-        "**/node_modsules": true,
-        "**/package1.json": true,
+        "**/node_modules": false,
+        "**/package.json": false,
         "**/package-lock.json": true,
     },
     "liveServer.settings.port": 5501

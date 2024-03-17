@@ -1,7 +1,23 @@
 <template>
+    <!-- HTML -->
     <form class="form"  @submit.prevent="registerUser">
-        <p class="title">Login</p>
-        <p class="message">Faça login e desfrute dos nossos produtos! </p>
+        <p class="title">Registre-se </p>
+        <p class="message">Faça seu cadastro e desfrute dos nossos produtos! </p>
+        <div class="flex">
+            <label>
+                <input class="input" type="text" v-model="nome" placeholder="" required>
+                <span>Primeiro Nome</span>
+            </label>
+
+            <label>
+                <input class="input" type="text" v-model="sobrenome" placeholder="" required>
+                <span>Segundo Nome</span>
+            </label>
+            <label>
+                <input class="input" type="number" v-model="idade" placeholder="" required>
+                <span>Idade</span>
+            </label>
+        </div>
 
         <label>
             <input class="input" type="email" v-model="email" placeholder="" required>
@@ -13,25 +29,31 @@
             <span>Senha</span>
         </label>
         
+        <label>
+            <input class="input" type="password" v-model="confirmasenha" placeholder="" required>
+            <span>Confirme sua senha</span>
+        </label>
         <button class="submit">Enviar</button>
-        <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
+        <p class="signin">Já tem uma conta?  <a href="/auth/login">Fazer login</a> </p>
     </form>
-
 </template>
-
 
 <script>
 import axios from 'axios';
 
 export default {
-    data () {
+    data() {
         return {
+            nome: '',
+            sobrenome: '',
+            idade: '',
             email: '',
             senha: '',
+            confirmasenha: ''
         }
     },
     methods: {
-        async authLoginFront() {
+        async registerUser() {
             try {
                 const config = {
                     headers: {
@@ -40,26 +62,32 @@ export default {
                 };
 
                 const usuario = {
+                    nome: this.nome,
+                    sobrenome: this.sobrenome,
+                    idade: this.idade,
                     email: this.email,
                     senha: this.senha,
+                    confirmasenha: this.confirmasenha
                 };
-                const response = await axios.post('http://localhost:3000/auth/login', usuario, config);
-
-                localStorage.setItem("usuario", JSON.stringify(response.data));
-
-                console.log('Usuário conectado:', response.data);
-
-                // Redirecionar para a página inicial após o login bem-sucedido
-                this.$router.push('/');
+                const response = await axios.post('http://localhost:3000/auth/register', usuario, config);
+                console.log('Usuário cadastrado:', response.data);
+                // Implemente a lógica adequada após o registro, se necessário
             } catch (error) {
-                console.error('Erro ao criar usuário:', error);
+                console.error('Erro ao cadastrar usuário:', error);
+                const usuario = {
+                        nome: this.nome,
+                        sobrenome: this.sobrenome,
+                        idade: this.idade,
+                        email: this.email,
+                        senha: this.senha,
+                        confirmasenha: this.confirmasenha
+                    };
+                console.log('Usuário que apresenhou erro:', usuario);
             }
-        },
+        }
     }
 }
-
 </script>
-
 
 <style>
 

@@ -1,9 +1,12 @@
 // Arquivo de configuração do MongoDB
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/sistemacompralegal');
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log('Conexão com o MongoDB estabelecida!');
     } catch (error) {
         console.error('Erro ao conectar ao MongoDB:', error.message);
