@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import axios from 'axios';
 
 //  COMPONENT
 import NavBar from './../components/Navbar.vue';
@@ -13,18 +14,56 @@ import telaProduto from './../views/produto/TelaListProduto.vue';
 
 // Middleware de autenticação (da pra fazer diferenciado, para diferentes tipos de acessos pedir login)
 
-const authMiddleware = (to, from, next) => {
-  // Verifica se o usuário está autenticado
-  const isAuthenticated = localStorage.getItem('usuario') !== null;
+const authMiddleware = async (to, from, next) => {
+
+  const authorizationStorage = localStorage.getItem('acessToken');
 
   // Se o usuário estiver autenticado, permita o acesso à rota
-  if (isAuthenticated || to.path === '/auth/login' || to.path === '/auth/register') {
+
+  if (authorizationStorage) {
+
+    const config = {
+      headers: {
+        'authorization': `Bearer ${authorizationStorage}`
+      },
+      timeout: 5000 // Tempo limite em milissegundos (por exemplo, 5 segundos)
+    };
+    
+
+    try {
+      const response = await axios.post('http://localhost:3000/auth/verify', null, config);
+
+      if (response.status === 200) {
+        console.log('Token verificado com sucesso:', response.data);
+        next();
+      }
+    } catch (error) {
+      console.error('Falha ao verificar o token:', error);
+      // Caso contrário, redirecione para a página de login
+      next('/auth/login');
+    }
+  } else {
+    // Se não houver token de acesso, redirecione para a página de login
+    next('/auth/login');
+  }
+
+};
+
+const authMiddlewareLogin = (to, from, next) => {
+  // Verifica se o usuário NÃO está autenticado
+  const isNotAuthenticated = localStorage.getItem('acessToken') == null;
+
+  // Se o usuário NÃO estiver autenticado, permita o acesso à rota
+  if (isNotAuthenticated) {
     next();
   } else {
     // Caso contrário, redirecione para a página de login
-    next('/auth/login');
+    next('/');
   }
 };
+
+
+
 
 
 
@@ -73,7 +112,9 @@ const routes = [
     },
     meta: {
       title: 'Fazer Login'
-    }
+    },
+    // Definindo o middleware Auth (verificacao de login)
+    beforeEnter: authMiddlewareLogin
   },
   {
     path: '/auth/register',
