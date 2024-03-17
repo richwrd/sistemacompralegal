@@ -19,7 +19,6 @@ async function buscarIdUsuarioPorNome(nomeUsuario) {
   }
 }
 
-
 describe('📦 POST', () => {
   describe('#createUsuario()\n        auth/register', () => {
     it('Deve criar um novo usuário', async () => {

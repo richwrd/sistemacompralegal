@@ -67,19 +67,24 @@ export default class AuthController {
     };
 
     // Verificador de   token
-    static verifyToken(req, res, next) {
-        const token = req.headers['authorization'];
+    static verifyToken(req, res) {
 
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1];
+        // console.log(authHeader);
+        
         if (!token) {
-            return res.status(403).send('Token não fornecido!');
+            return res.status(403).send('Token não fornecido!!!!!');
         }
 
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
             if (err) {
+                console.log(err)
                 return res.status(401).send('Falha ao autenticar o token!');
             }
             req.userId = decoded.id;
-            next();
+            
+            return res.status(200).json({ "status": "Token válido" });
         });
     };
 

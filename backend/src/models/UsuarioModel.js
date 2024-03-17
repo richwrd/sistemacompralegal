@@ -3,7 +3,6 @@ import mongoose, { Schema } from 'mongoose';
 import mongooseSequence from 'mongoose-sequence';
 import bcrypt from 'bcrypt';
 
-
 connectDB();
 
 const { ObjectId } = mongoose.Types;
@@ -56,7 +55,6 @@ UsuarioSchema.methods.comparePassword = async function (senha) {
         throw error;
     }
 };
-
 
 // Crie o modelo usando o esquema
 const Usuario = mongoose.model('usuarios', UsuarioSchema);

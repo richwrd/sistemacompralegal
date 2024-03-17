@@ -1,5 +1,4 @@
 import Produto from '../models/ProdutoModel.js';
-
 export default class ProdutoController {
     static async getProdutoList(req, res) {
         try {
@@ -13,9 +12,7 @@ export default class ProdutoController {
                 .limit(limit);
 
             const total = await Produto.countDocuments();
-
             // console.log(produtos, total, page, Math.ceil(total / limit));
-
             return res.status(200).json({
                 produtos,
                 total,
@@ -28,7 +25,7 @@ export default class ProdutoController {
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     }
-    
+
     static async getProduto(req, res) {
         const { id } = req.params;
         try {
@@ -50,7 +47,7 @@ export default class ProdutoController {
             const produto = new Produto({ nome, preco, descricao, imagem, tipo, categoria, quantidade });
 
             if (!produto.imagem) {
-                produto.imagem = "https://static3.tcdn.com.br/img/img_prod/468236/produto_teste_7145_1_f816ad73890b2db46e6e460c44ae5d22.png";
+                produto.imagem = "https://cdn-icons-png.flaticon.com/512/1695/1695213.png";
             }
 
             await produto.save();

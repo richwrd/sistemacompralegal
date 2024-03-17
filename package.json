@@ -2,9 +2,9 @@
   "name": "compralegal",
   "version": "1.0.0",
   "scripts": {
-    "start:backend": "cd backend && npm start",
-    "start:frontend": "cd frontend && npm run serve",
-    "start": "npm run start:backend & npm run start:frontend"
+    "frontend": "cd frontend && npm run serve",
+    "backend": "cd backend && npm start",
+    "start": "npm run backend && npm run frontend"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
