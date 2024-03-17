@@ -13,7 +13,8 @@
   <router-view name="telaDeletaProduto"></router-view>
   
   <router-view name="alertSuccess"></router-view>
-  <router-view name="TelaMinhaConta"></router-view>
+  
+  <router-view name="telaEditUser"></router-view>
 </template>
 
 <script>

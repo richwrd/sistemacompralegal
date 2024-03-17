@@ -2,11 +2,15 @@
     <div>
         <div>
             <h2>Produtos</h2>
-            <ul class="nav-links">
-                <div style="display:flex; justify-content: flex-end; align-items: center;">
-                    <li class="upward"><a href="/produto/create">Cadastro</a></li>
-                </div>
-            </ul>
+
+            <template v-if="authenticated">
+                <ul class="nav-links">
+                    <div style="display:flex; justify-content: flex-end; align-items: center;">
+                        <li class="upward"><a href="/produto/create">Cadastro</a></li>
+                    </div>
+                </ul>
+            </template>
+
         </div>
         <div class="card-list">
             <div v-for="produto in produtos" :key="produto._id" class="card-item" @click="editarProduto(produto._id)">
@@ -27,16 +31,18 @@ export default {
     name: 'TelaProduto',
     data() {
         return {
-            produtos: []
+            produtos: [],
+            authenticated: false
         };
     },
     created() {
         this.fetchProdutos();
+        this.verificarToken();
     },
     methods: {
         async fetchProdutos() {
             try {
-                
+
 
                 const response = await axios.get('http://localhost:3000/produto/list', {
                     params: { page: 1, limit: 10 } // Define a página como 1 e o limite como 10
@@ -53,6 +59,30 @@ export default {
                 console.log(this.produto);
             } catch (error) {
                 console.error('Erro ao editar o produto:', error);
+            }
+        },
+        async verificarToken() {
+            // const AuthorizationStorage = localStorage.getItem('Authorization');
+            const authorizationStorage = localStorage.getItem('acessToken');
+
+            const config = {
+                headers: {
+                    'authorization': `Bearer ${authorizationStorage}`
+                },
+                timeout: 5000 // Tempo limite em milissegundos (por exemplo, 5 segundos)
+            };
+
+            if (authorizationStorage) {
+                try {
+                    const response = await axios.post('http://localhost:3000/auth/verify', null, config);
+                    if (response.status === 200) {
+                        this.authenticated = true;
+
+                        console.log('Token verificado com sucesso:', response.data);
+                    }
+                } catch (error) {
+                    console.error('Falha ao verificar o token:', error);
+                }
             }
         },
     },

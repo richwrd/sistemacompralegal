@@ -66,7 +66,7 @@ body {
 }
 
 #app {
-    background-color: #c32929;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(140, 22, 160, 0.1);

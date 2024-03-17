@@ -157,7 +157,7 @@ const routes = [
   },
   {
     path: '/usuario/edit/:id',
-    name: 'MinhaConta',
+    name: 'telaEditUser',
     components: {
       default: NavBar,
       telaEditUser: telaEditUser
