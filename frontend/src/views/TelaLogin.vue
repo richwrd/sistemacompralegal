@@ -1,5 +1,6 @@
 <template>
-    <form class="form"  @submit.prevent="registerUser">
+
+    <form class="form"  @submit.prevent="authLoginFront" >
         <p class="title">Login</p>
         <p class="message">Faça login e desfrute dos nossos produtos! </p>
 
@@ -13,7 +14,7 @@
             <span>Senha</span>
         </label>
         
-        <button class="submit">Enviar</button>
+        <button class="submit" >Enviar</button>
         <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
     </form>
 
@@ -45,12 +46,11 @@ export default {
                 };
                 const response = await axios.post('http://localhost:3000/auth/login', usuario, config);
 
-                localStorage.setItem("usuario", JSON.stringify(response.data));
+                        // Salvar apenas o token de acesso no armazenamento local
+                localStorage.setItem('acessToken', response.data.accessToken);
 
-                console.log('Usuário conectado:', response.data);
+                // console.log('Token de acesso salvo:', response.data.accessToken);
 
-                // Redirecionar para a página inicial após o login bem-sucedido
-                this.$router.push('/');
             } catch (error) {
                 console.error('Erro ao criar usuário:', error);
             }
