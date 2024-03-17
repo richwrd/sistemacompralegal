@@ -17,7 +17,7 @@ export default class ProdutoController {
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     }
-    
+
     static async getProduto(req, res) {
         const { id } = req.params;
         try {
