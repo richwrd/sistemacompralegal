@@ -20,7 +20,7 @@
             <span>Senha</span>
         </label>
         
-        <button class="submit" >Enviar</button>
+        <button class="submit">Enviar</button>
         <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
     </form>
 =======
@@ -43,6 +43,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            usuarioCadastrado: false,
             email: '',
             senha: '',
         }
@@ -67,8 +68,13 @@ export default {
 
                 // console.log('Token de acesso salvo:', response.data.accessToken);
 
+                this.$router.push({ name: 'Home' });
+
+                // Recarregar a página
+                window.location.reload();
             } catch (error) {
                 console.error('Erro ao criar usuário:', error);
+
             }
         },
     }

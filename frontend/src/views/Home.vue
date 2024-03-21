@@ -1,22 +1,116 @@
+
 <template>
-    <!-- HTML -->
-    <p>HOME</p>
+    <div v-for="categoria in categorias" :key="categoria.id">
+        <div class="card" @click="editarProduto(categoria.produtos[0]._id)">
+            <div style="width: 60%;">
+                <img :src= "categoria.produtos[0].imagem" style="width:80%; height: 400px;"/>
+            </div>
+            <div style="width: 40%;">
+                <div style="height: 70%; display: flex; align-items: center; justify-content: center">
+                    <h1>{{ categoria.produtos[0].nome }}</h1>
+                </div>
+                <div style="height: 30%; display: flex; align-items: center; justify-content: center">
+                    <h2 :class="categoria.produtos[0].preco" style="font-size: 1.90em;">R$ {{ categoria.produtos[0].preco }}</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <h1>{{ categoria.categoria }}</h1>
+        <carousel :breakpoints="breakpoints">
+            <slide v-for="produto in categoria.produtos" :key="produto._id" style="width: 30%;">
+                <div class="carousel__item" @click="editarProduto(produto._id)">
+                    <div class="carousel__img">
+                        <img :src="produto.imagem" alt="Imagem do Produto"/>
+                    </div>
+                    <div style="width: 50%;">
+                        <div style="height: 47%;">
+                            <h3>{{ produto.nome }}</h3>
+                        </div>
+                        <div style="height: 47%;">
+                            <h2 :class="produto.preco" style="font-size: 1rem;">R$ {{ produto.preco }}</h2>
+                            <span :class="produto.categoria">{{ produto.categoria }}</span>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+            <template #addons>
+                <navigation />
+            </template>
+        </carousel>
+    </div>
 </template>
 
 <script>
-export default{
+import axios from 'axios';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+
+export default {
     name: 'telaHome',
-    props: {
-        msg: String
-    }
-}
+    components: {
+        Carousel,
+        Slide,
+        Navigation,
+    },
+    data() {
+        return {
+            categorias: [],
+        };
+    },
+    created() {
+        this.fetchProdutos();
+    },
+    methods: {
+        async fetchProdutos() {
+            try {
+
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    timeout: 5000 // Tempo limite em milissegundos (por exemplo, 5 segundos)
+                };
+
+                const response = await axios.get('http://localhost:3000/produto/list', null, config);
+
+
+                let categorias = response.data.produtos.map((item) => item.categoria);
+                categorias = categorias.filter((value, index) => categorias.indexOf(value) === index);
+                
+                let length = 10;
+                if(categorias.length < 10) 
+                length = categorias.length;
+
+                for(let i = 0; i < length; i++){
+                    this.categorias.push({  
+                        id: i,
+                        categoria: categorias[i],
+                        produtos: response.data.produtos.filter(item => {
+                            return item.categoria === categorias[i];
+                        })
+                    });
+                }
+                console.log(this.categorias)
+            } catch (error) {
+                console.error('Erro ao obter produtos (List):', error);
+            }
+        },
+
+        editarProduto(idProduto) {
+            try {
+                this.$router.push({ name: 'telaAtualizaProduto', params: { id: idProduto } });
+                console.log('ID do produto enviado:', idProduto);
+                // console.log(this.produto);
+            } catch (error) {
+                console.error('Erro ao editar o produto:', error);
+            }
+        },
+    },
+};
 </script>
 
-<<<<<<< Updated upstream
 <style>
-    /* css */
-=======
-<style scoped>
 
 .card {
     width: 80%; 
@@ -28,6 +122,7 @@ export default{
     display: inline-flex;
     padding: 30px;
 }
+
 .card:hover {
     border: 2px solid #000;
 }
@@ -49,6 +144,7 @@ export default{
     border: 2px solid transparent;
     transition: border 0.5s ease;
     padding: 30px;
+
 }
 
 .carousel__item:hover {
@@ -94,5 +190,4 @@ img {
     border-radius: 999px;
     background-color: white;
 }
->>>>>>> Stashed changes
 </style>
