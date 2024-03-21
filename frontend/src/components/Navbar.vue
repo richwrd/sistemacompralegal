@@ -139,7 +139,7 @@ body {
     display: flex;
     justify-content: space-between;
     background: #fff;
-    padding: 20px 15px;
+    padding: 6px 20px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -207,7 +207,7 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 14px 36px;
+    padding: 2px 28px;
     border: 3px solid;
     border-color: transparent;
     font-size: 16px;
@@ -263,6 +263,10 @@ body {
     box-shadow: 0 0 0 12px transparent;
     color: greenyellow;
     border-radius: 12px;
+}
+
+.animated-button:hover .text{
+    color: white;
 }
 
 .animated-button:hover .arr-1 {

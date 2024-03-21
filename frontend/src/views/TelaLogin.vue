@@ -1,23 +1,23 @@
 <template>
+    <div class="container">
+        <form class="form" @submit.prevent="authLoginFront">
+            <p class="title">Login</p>
+            <p class="message">Faça login e desfrute dos nossos produtos! </p>
 
-    <form class="form"  @submit.prevent="authLoginFront" >
-        <p class="title">Login</p>
-        <p class="message">Faça login e desfrute dos nossos produtos! </p>
+            <label>
+                <input class="input" type="email" v-model="email" placeholder="" required>
+                <span>E-mail</span>
+            </label>
 
-        <label>
-            <input class="input" type="email" v-model="email" placeholder="" required>
-            <span>E-mail</span>
-        </label>
+            <label>
+                <input class="input" type="password" v-model="senha" placeholder="" required>
+                <span>Senha</span>
+            </label>
 
-        <label>
-            <input class="input" type="password" v-model="senha" placeholder="" required>
-            <span>Senha</span>
-        </label>
-        
-        <button class="submit">Enviar</button>
-        <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
-    </form>
-
+            <button class="submit">Enviar</button>
+            <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
+        </form>
+    </div>
 </template>
 
 
@@ -25,7 +25,7 @@
 import axios from 'axios';
 
 export default {
-    data () {
+    data() {
         return {
             usuarioCadastrado: false,
             email: '',
@@ -47,7 +47,7 @@ export default {
                 };
                 const response = await axios.post('http://localhost:3000/auth/login', usuario, config);
 
-                        // Salvar apenas o token de acesso no armazenamento local
+                // Salvar apenas o token de acesso no armazenamento local
                 localStorage.setItem('acessToken', response.data.accessToken);
 
                 // console.log('Token de acesso salvo:', response.data.accessToken);
@@ -67,8 +67,7 @@ export default {
 </script>
 
 
-<style>
-
+<style scoped>
 .form {
     display: flex;
     justify-content: center;
@@ -80,6 +79,11 @@ export default {
     padding: 20px;
     border-radius: 12px;
     position: relative;
+}
+
+.container{
+    margin-top: 50px;
+    display: inline-block;
 }
 
 .title {
