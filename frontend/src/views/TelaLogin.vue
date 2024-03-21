@@ -1,9 +1,15 @@
 <template>
+    <div class="container">
+        <form class="form" @submit.prevent="authLoginFront">
+            <p class="title">Login</p>
+            <p class="message">Faça login e desfrute dos nossos produtos! </p>
 
-    <form class="form"  @submit.prevent="authLoginFront" >
-        <p class="title">Login</p>
-        <p class="message">Faça login e desfrute dos nossos produtos! </p>
+            <label>
+                <input class="input" type="email" v-model="email" placeholder="" required>
+                <span>E-mail</span>
+            </label>
 
+<<<<<<< Updated upstream
         <label>
             <input class="input" type="email" v-model="email" placeholder="" required>
             <span>E-mail</span>
@@ -17,7 +23,17 @@
         <button class="submit" >Enviar</button>
         <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
     </form>
+=======
+            <label>
+                <input class="input" type="password" v-model="senha" placeholder="" required>
+                <span>Senha</span>
+            </label>
+>>>>>>> Stashed changes
 
+            <button class="submit">Enviar</button>
+            <p class="signin">Ainda não tem conta? <a href="/auth/register">Cadastrar-se</a> </p>
+        </form>
+    </div>
 </template>
 
 
@@ -25,7 +41,7 @@
 import axios from 'axios';
 
 export default {
-    data () {
+    data() {
         return {
             email: '',
             senha: '',
@@ -46,7 +62,7 @@ export default {
                 };
                 const response = await axios.post('http://localhost:3000/auth/login', usuario, config);
 
-                        // Salvar apenas o token de acesso no armazenamento local
+                // Salvar apenas o token de acesso no armazenamento local
                 localStorage.setItem('acessToken', response.data.accessToken);
 
                 // console.log('Token de acesso salvo:', response.data.accessToken);
@@ -63,9 +79,14 @@ export default {
 
 <style>
 
+.container{
+    margin-top: 50px;
+    display: inline-block;
+}
+
 .form {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     flex-direction: column;
     gap: 10px;
@@ -130,7 +151,7 @@ export default {
 
 .flex {
     display: flex;
-    width: 100%;
+    width: 300%;
     gap: 6px;
 }
 
@@ -140,7 +161,7 @@ export default {
 
 .form label .input {
     width: 100%;
-    padding: 10px 10px 20px 10px;
+    padding: 15px 10px 15px 10px;
     outline: 0;
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
@@ -191,7 +212,7 @@ export default {
 @keyframes pulse {
     from {
         transform: scale(0.9);
-        opacity: 1;
+        opacity: 0;
     }
 
     to {

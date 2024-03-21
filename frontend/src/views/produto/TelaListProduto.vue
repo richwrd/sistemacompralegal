@@ -77,7 +77,7 @@ export default {
 
 .card-list span {
     display: inline-block;
-    background: #f7dff5;
+    background: #f7dfdf;
     margin-top: 32px;
     padding: 8px 15px;
     font-size: 0.75rem;

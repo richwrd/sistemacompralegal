@@ -131,7 +131,7 @@ body {
     display: flex;
     justify-content: space-between;
     background: #fff;
-    padding: 20px 15px;
+    padding: 0px 20px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -199,7 +199,7 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 14px 36px;
+    padding: 2px 28px;
     border: 3px solid;
     border-color: transparent;
     font-size: 16px;
@@ -249,6 +249,10 @@ body {
     color:  rgb(5, 131, 16);
     transform: translateX(-12px);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover .text{
+    color: #ffffff;
 }
 
 .animated-button:hover {
@@ -322,7 +326,6 @@ body {
     position: absolute;
     right: 0%;
     width: 0%;
-    opacity: 0;
     color: rgb(210, 3, 3);
     font-size: 1.2em;
     font-weight: 600;
