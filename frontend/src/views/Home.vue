@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .card {
     width: 80%; 
@@ -120,6 +120,7 @@ export default {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
     background-color: white;
     display: inline-flex;
+    padding: 20px;
 }
 .card:hover {
     border: 2px solid #000;
@@ -141,6 +142,7 @@ export default {
     text-decoration: none;
     border: 2px solid transparent;
     transition: border 0.5s ease;
+    padding: 20px;
 }
 
 .carousel__item:hover {

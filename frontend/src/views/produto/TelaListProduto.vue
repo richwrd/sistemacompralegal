@@ -131,7 +131,7 @@ h2 {
 }
 
 .card-list span {
-    display: inline-block;
+    display: inline-flex;
     background: #f7dff5;
     margin-top: 32px;
     padding: 8px 15px;

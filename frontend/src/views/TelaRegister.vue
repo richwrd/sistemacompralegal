@@ -1,41 +1,42 @@
 <template>
-    <!-- HTML -->
-    <form class="form"  @submit.prevent="registerUser">
-        <p class="title">Registre-se </p>
-        <p class="message">Faça seu cadastro e desfrute dos nossos produtos! </p>
-        <div class="flex">
+    <div class="container">
+        <form class="form" @submit.prevent="registerUser">
+            <p class="title">Registre-se </p>
+            <p class="message">Faça seu cadastro e desfrute dos nossos produtos! </p>
+            <div class="flex">
+                <label>
+                    <input class="input" type="text" v-model="nome" placeholder="" required>
+                    <span>Primeiro Nome</span>
+                </label>
+
+                <label>
+                    <input class="input" type="text" v-model="sobrenome" placeholder="" required>
+                    <span>Segundo Nome</span>
+                </label>
+                <label>
+                    <input class="input" type="number" v-model="idade" placeholder="" required>
+                    <span>Idade</span>
+                </label>
+            </div>
+
             <label>
-                <input class="input" type="text" v-model="nome" placeholder="" required>
-                <span>Primeiro Nome</span>
+                <input class="input" type="email" v-model="email" placeholder="" required>
+                <span>E-mail</span>
             </label>
 
             <label>
-                <input class="input" type="text" v-model="sobrenome" placeholder="" required>
-                <span>Segundo Nome</span>
+                <input class="input" type="password" v-model="senha" placeholder="" required>
+                <span>Senha</span>
             </label>
+
             <label>
-                <input class="input" type="number" v-model="idade" placeholder="" required>
-                <span>Idade</span>
+                <input class="input" type="password" v-model="confirmasenha" placeholder="" required>
+                <span>Confirme sua senha</span>
             </label>
-        </div>
-
-        <label>
-            <input class="input" type="email" v-model="email" placeholder="" required>
-            <span>E-mail</span>
-        </label>
-
-        <label>
-            <input class="input" type="password" v-model="senha" placeholder="" required>
-            <span>Senha</span>
-        </label>
-        
-        <label>
-            <input class="input" type="password" v-model="confirmasenha" placeholder="" required>
-            <span>Confirme sua senha</span>
-        </label>
-        <button class="submit">Enviar</button>
-        <p class="signin">Já tem uma conta?  <a href="/auth/login">Fazer login</a> </p>
-    </form>
+            <button class="submit">Enviar</button>
+            <p class="signin">Já tem uma conta? <a href="/auth/login">Fazer login</a> </p>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -75,13 +76,13 @@ export default {
             } catch (error) {
                 console.error('Erro ao cadastrar usuário:', error);
                 const usuario = {
-                        nome: this.nome,
-                        sobrenome: this.sobrenome,
-                        idade: this.idade,
-                        email: this.email,
-                        senha: this.senha,
-                        confirmasenha: this.confirmasenha
-                    };
+                    nome: this.nome,
+                    sobrenome: this.sobrenome,
+                    idade: this.idade,
+                    email: this.email,
+                    senha: this.senha,
+                    confirmasenha: this.confirmasenha
+                };
                 console.log('Usuário que apresenhou erro:', usuario);
             }
         }
@@ -90,6 +91,11 @@ export default {
 </script>
 
 <style>
+
+.container{
+    margin-top: 50px;
+    display: inline-block;
+}
 
 .form {
     display: flex;
@@ -164,6 +170,9 @@ export default {
 
 .form label {
     position: relative;
+    margin: 10px;
+    padding: 5px;
+    text-align: justify;
 }
 
 .form label .input {
