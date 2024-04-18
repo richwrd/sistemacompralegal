@@ -3,7 +3,7 @@
     <div v-for="categoria in categorias" :key="categoria.id">
         <div class="card" @click="editarProduto(categoria.produtos[0]._id)">
             <div style="width: 60%;">
-                <img :src= "categoria.produtos[0].imagem" style="width:80%; height: 400px;"/>
+                <img :src= "categoria.produtos[0].imagem" style=" height: 400px;"/>
             </div>
             <div style="width: 40%;">
                 <div style="height: 70%; display: flex; align-items: center; justify-content: center">
@@ -154,6 +154,10 @@ export default {
     overflow-y: auto;
 }
 
+.img{
+    border-radius: 40px;
+}
+
 span {
     background: #f7dff5;
     margin-top: 32px;
@@ -175,9 +179,8 @@ span {
 }
 
 img {
-    width: 100%;
     aspect-ratio: 16/9;
-    border-radius: 8px;
+    border-radius: 10px;
     object-fit: contain;
 }
 

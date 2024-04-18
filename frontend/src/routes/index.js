@@ -13,7 +13,7 @@ import telaCadastroProduto from '../views/produto/components/TelaCadastraProduto
 import telaAtualizaProduto from '../views/produto/components/TelaAtualizaProduto.vue';
 
 import telaLogin from './../views/TelaLogin.vue';
-import telaRegister from './../views/TelaRegister.vue';
+import telaRegister from './../views/usuario/TelaRegister.vue';
 import telaEditUser from './../views/usuario/TelaMinhaConta.vue';
 
 
@@ -68,9 +68,6 @@ const authMiddlewareLogin = (to, from, next) => {
   }
 };
 
-
-
-
 const routes = [
   {
     path: '/',
@@ -98,7 +95,7 @@ const routes = [
   },
   {
     path: '/auth/login',
-    name: 'Compre Legal - Login',
+    name: 'Login',
     components: {
       default: NavBar,
       telaLogin: telaLogin
@@ -111,7 +108,7 @@ const routes = [
   },
   {
     path: '/auth/register',
-    name: 'Compre Legal Login',
+    name: 'Register',
     components: {
       default: NavBar,
       telaRegister: telaRegister
